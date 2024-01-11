@@ -1,28 +1,29 @@
-{% set pvStatus = data['barrier-public-view-status'] %}
-{% set pvApproved = data['public-title'] %}
-{% set pvSummaryStatus = data['public-summary'] %}
+{% set pvPublishAllowedStatus = data['barrier-public-view-status'] %}
+{% set pvTitle = data['public-title'] %}
+{% set pvSummary = data['public-summary'] %}
 {% set pvApprovalStatus = data['approval-status'] %}
-{% set pvStatus = 'not allowed' %}
+{#}
+{% set pvPublishAllowedStatus = 'allowed' %}
 {% set pvTitleStatus = 'entered' %}
 {% set pvSummaryStatus = 'entered' %}
-{% set pvApprovalStatus = 'not approved' %}
+{% set pvApprovalStatus = 'not approved' %} #}
 <!-- NEED TO COME BACK AND SET AN OVERALL PUBLIC VIEW STATUS VAR -->
 
 <!-- IF PV NOT ALLOWED WE SUPRESS THE COMPONENT -->
-{% if pvStatus == "not allowed" %}
+{% if pvPublishAllowedStatus == "Cannot be published" %}
 
 <!-- IF PV NOT SET EITHER WAY -->
-{% elseif not pvStatus %}  
+{% elseif not pvPublishAllowedStatus or pvPublishAllowedStatus and not pvTitle or not pvSummary %}  
     <!-- show first time box style -->
     <div class="information-box information-box__notset">
             <div class="govuk-summary-list__row">
                 <h2 class="govuk-heading-m govuk-!-margin-bottom-3">Approval</h2>
             </div>     
-            <p class="govuk-body govuk-hint govuk-!-margin-bottom-2">You must set the public view status and add a title and summary.</p>
+            <p class="govuk-body govuk-hint govuk-!-margin-bottom-2">You must set the public view status and add a title and summary before you can approve.</p>
     </div>
 
 <!-- IF PV SET AND TITLE AND SUMMARY ADDED --> 
-{% elseif pvStatus == "allowed" and pvTitleStatus == "entered" and pvSummaryStatus == "entered" %}
+{% elseif pvPublishAllowedStatus == "Can be published" and pvTitle and pvSummary %}
     <div class="information-box">
         <div class="govuk-summary-list__row">
             <h2 class="govuk-heading-m govuk-!-margin-bottom-3">Approval</h2>
@@ -34,7 +35,7 @@
             <li>Department for Levelling Up, Housing and Communities</li>
             <li>Department for Environment, Food & Rural Affairs</li>
         </ul>
-        {% if pvApprovalStatus == "not approved"%}
+        {% if not pvApprovalStatus %}
             <ul class="govuk-list ">
                 <li class="govuk-!-margin-top-0"><a href="#" class="govuk-link--no-visited-state govuk-!-font-size-19">Edit approvers</a></li>
             </ul>

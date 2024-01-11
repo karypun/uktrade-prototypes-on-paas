@@ -1,0 +1,40 @@
+                <!-- DISPLAY STATUS BASED ON STATE OF BARRIER -->
+                <!-- CONSIDER COMING BACK AND MAINTAINING AN ARRAY -->
+
+                <!-- NOTHING SET YET -->
+                {% if not pvPublishAllowedStatus %}
+                    {{ appPublicViewStatus({
+                        publicViewState: 'notset'
+                        })
+                    }}
+                <!-- CANNOT BE PUBLISHED -->
+                {% elseif pvPublishAllowedStatus == 'Cannot be published' %}
+                    {{ appPublicViewStatus({
+                        publicViewState: 'cannot be published'
+                        })
+                    }}
+                <!-- CAN BE PUBLISHED, NEEDS TITLE AND SUMMARY -->  
+                {% elseif pvPublishAllowedStatus == 'Can be published' and not pvTitle or not pvSummary %}
+                    {{ appPublicViewStatus({
+                        publicViewState: 'title or summary not added'
+                        })
+                    }}
+                <!-- CAN BE PUBLISHED, HAS TITLE AND SUMMARY, NEEDS TO BE APPROVED -->  
+                {% elseif pvPublishAllowedStatus == 'Can be published' and  pvTitle and pvSummary and not pvApprovalStatus %}
+                    {{ appPublicViewStatus({
+                        publicViewState: 'awaiting approval'
+                        })
+                    }}
+                <!-- CAN BE PUBLISHED, HAS TITLE AND SUMMARY, IS APPROVED AND NEEDS TO BE PUBLISHED -->  
+                {% elseif pvPublishAllowedStatus == 'Can be published' and pvTitle and pvSummary and pvApprovalStatus == 'approved' and not pvPublishStatus %}
+                    {{ appPublicViewStatus({
+                        publicViewState: 'approved'
+                        })
+                    }}
+                <!-- CAN BE PUBLISHED, HAS TITLE AND SUMMARY, IS APPROVED AND IS PUBLISHED -->  
+                {% elseif pvPublishAllowedStatus == 'Can be published' and pvTitle and pvSummary and pvApprovalStatus == 'approved' and pvPublishStatus == 'published' %}
+                    {{ appPublicViewStatus({
+                        publicViewState: 'published'
+                        })
+                    }}
+                {% endif %}

@@ -1,15 +1,18 @@
-{% set pvStatus = data['barrier-public-view-status'] %}
-{% set pvTitleStatus = data['public-title'] %}
-{% set pvSummaryStatus = data['public-summary'] %}
-{% set pvStatus = 'not allowed' %}
-{% set pvTitleStatus = 'entered' %}
-{% set pvSummaryStatus = 'entered' %}
+{% set pvPublishAllowedStatus = data['barrier-public-view-status'] %}
+{% set pvTitle = data['public-title'] %}
+{% set pvSummary = data['public-summary'] %}
 
-<!-- IF PV NOT ALLOWED WE SUPRESS THE COMPONENT -->
-{% if pvStatus == "not allowed" %}
+{#}
+{% set pvStatus = 'allowed' %}
+{% set pvTitleStatus = 'entered' %}
+{% set pvSummaryStatus = 'entered' %} #}
+
+<!-- IF PV NOT ALLOWED WE SUPRESS THE COMPONENT UNLESS PUBLIC TITLE AND/OR SUMMARY ALREADY ADDED-->
+{% if pvPublishAllowedStatus == "Cannot be published" %}
+<!-- ADD LOGIC TO SHOW TITLE AND/OR SUMMARY IF ALREADY ENTERED HERE-->
 
 <!-- IF PV NOT SET EITHER WAY -->
-{% elseif not pvStatus %}  
+{% elseif not pvPublishAllowedStatus %}  
     <!-- show first time box style -->
     <div class="information-box information-box__notset">
             <div class="govuk-summary-list__row">
@@ -20,24 +23,24 @@
 
 
 <!-- IF PV SET TO ALLOWED -->
-{% elseif pvStatus == "allowed" %}
+{% elseif pvPublishAllowedStatus == "Can be published" %}
     <div class="information-box">
         <div class="govuk-summary-list__row">
             <h2 class="govuk-heading-m govuk-!-margin-bottom-3">Public title and summary</h2>
         </div>
-        {% if pvTitleStatus == 'entered' %}
+        {% if pvTitle %}
             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">Public title</p>
-            <p class="govuk-body govuk-!-margin-bottom-2">Electronics to Iceland</p>
-            <p class="govuk-body"><a href="#" class="govuk-link--no-visited-state govuk-!-font-size-19">Edit</a></p>
+            <p class="govuk-body govuk-!-margin-bottom-2">{{ pvTitle }}</p>
+            <p class="govuk-body"><a href="edit-public-title" class="govuk-link--no-visited-state govuk-!-font-size-19">Edit</a></p>
         {% else %}
-        <p class="govuk-body"><a href="#" class="govuk-link--no-visited-state govuk-!-font-size-19">Add public title</a></p>
+        <p class="govuk-body"><a href="edit-public-title" class="govuk-link--no-visited-state govuk-!-font-size-19">Add public title</a></p>
         {% endif %}
-        {% if pvSummaryStatus == 'entered' %}
+        {% if pvSummary %}
             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-margin-top-3">Public summary</p>
-            <p class="govuk-body govuk-!-margin-bottom-2">Exporting electronics to Iceland are frozen at present.</p>
-            <a href="#" class="govuk-link--no-visited-state govuk-!-font-size-19">Edit</a>
+            <p class="govuk-body govuk-!-margin-bottom-2">{{ pvSummary }}</p>
+            <a href="edit-public-summary" class="govuk-link--no-visited-state govuk-!-font-size-19">Edit</a>
         {% else %}
-        <a href="#" class="govuk-link--no-visited-state govuk-!-font-size-19">Add public summary</a>
+        <a href="edit-public-summary" class="govuk-link--no-visited-state govuk-!-font-size-19">Add public summary</a>
         {% endif %}
     </div>
 {% endif %}

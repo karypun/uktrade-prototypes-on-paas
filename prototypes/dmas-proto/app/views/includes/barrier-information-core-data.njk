@@ -12,7 +12,13 @@
     </div>
     <div class="summary-group__list">
         <dt class="summary-group__list__key">Barrier description</dt>
-        <dd class="summary-group__list__value">Increase leg deal finally less above local daughter. Enough car cup news eye argue decision. While human prepare sometimes. Article walk over too sminky whatever this. Order type necessary with arrive specific thus method. Pinkey tend learn my friend fight just. <a class="summary-group__list__value__edit govuk-link--no-visited-state" href="#">Edit</a></dd>
+        <dd class="summary-group__list__value">
+            {% if data['barrier-description'] %}
+            {{ data['barrier-description'] }}
+            {% else %}
+            Exporting electronics to Iceland are frozen at present.
+            {% endif %} 
+            <a class="summary-group__list__value__edit govuk-link--no-visited-state" href="#">Edit</a></dd>
     </div>
     <div class="summary-group__list">
         <dt class="summary-group__list__key">Progress update</dt>

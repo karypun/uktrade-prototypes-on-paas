@@ -1,0 +1,182 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Page name – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+{{ govukTable({
+  caption: "Prototype variables list",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "What?"
+    },
+    {
+      text: "Session variable"
+    },
+    {
+      text: "Also known as"
+    },
+    {
+        text: "Accepted values"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: "Internal title"
+      },
+      {
+        text: "{{ data['barrier-title'] }}"
+      },
+      {
+        text: "barrierTitle"
+      },
+      {
+        text: "user defined value"
+      }
+    ],
+    [
+      {
+        text: "Internal description"
+      },
+      {
+        text: "{{ data['barrier-description'] }}"
+      },
+      {
+        text: "barrierDescription"
+      },
+      {
+        text: "null, user defined value"
+      }
+    ],
+    [
+      {
+        text: "Publishing allowed status"
+      },
+      {
+        text: "{{ data['barrier-public-view-status'] }}"
+      },
+      {
+        text: "pvPublishAllowedStatus"
+      },
+      {
+        text: "null, Can be published, Cannot be published"
+      }
+    ],
+    [
+      {
+        text: "Publishing not allowed reason"
+      },
+      {
+        text: "{{ data['barrier-not-allowed-desc'] }}"
+      },
+      {
+        text: "not set"
+      },
+      {
+        text: "null, user defined value"
+      }
+    ],
+    [
+      {
+        text: "Public title"
+      },
+      {
+        text: "{{ data['public-title'] }}"
+      },
+      {
+        text: "pvTitle"
+      },
+      {
+        text: "null, user defined value"
+      }
+    ],
+    [
+      {
+        text: "Public summary"
+      },
+      {
+        text: "{{ data['public-summary'] }}"
+      },
+      {
+        text: "pvSummary"
+      },
+      {
+        text: "null, user defined value"
+      }
+    ],
+    [
+      {
+        text: "Public approval status"
+      },
+      {
+        text: "{{ data['approval-status'] }}"
+      },
+      {
+        text: "pvApprovalStatus"
+      },
+      {
+        text: "null, approved, not approved (TBC)"
+      }
+    ],
+    [
+      {
+        text: "Public published status"
+      },
+      {
+        text: "{{ data['publish-status'] }}"
+      },
+      {
+        text: "pvPublishStatus"
+      },
+      {
+        text: "null, published, not published (TBC), rejected"
+      }
+    ],
+    [
+      {
+        text: "Public view state"
+      },
+      {
+        text: "n/a"
+      },
+      {
+        text: "publicViewState"
+      },
+      {
+        text: "null, notset, can be published, cannot be published, title or summary not added, awaiting approval, approved, rejected, published"
+      }
+    ],
+    [
+      {
+        text: "Confirmation banner state"
+      },
+      {
+        text: "conf-banner-state"
+      },
+      {
+        text: "confBannerState"
+      },
+      {
+        text: "null, can be published set, public title set, public summary set, approval set, rejected set, published set "
+      }
+    ]
+  ]
+}) }}
+
+{% endblock %}
+
+publicViewState

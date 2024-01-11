@@ -4,33 +4,16 @@
 Barrier publication – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
-{% block header %}
-<!-- MASTHEAD SECTION -->
-    {% include "/includes/dmasheader.njk" %}
-    <div class="datahub-header__navigation-container">
-      {% include "/includes/datahubnavbar.njk" %}
-      {% include "/includes/dmasnavbar-withrole.njk" %}
-    </div>
-{% endblock %}
-
-{% block beforeContent %}
-  {{ govukBackLink({
-  text: "Back",
-  href: "javascript:window.history.back()"
-}) }}
-{% endblock %}
-
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <span class="govuk-caption-m">Section 8 of 11</span>
       <h1 class="govuk-heading-l">
         Barrier publication
       </h1>     
 
-      <form class="form" action="/barrier-mve-pv-allowed" method="post">
-
+      <form class="form" action="barrier-information#public-view-tab" method="post">
+        <input type="hidden" id="conf-banner-state" name="conf-banner-state" value="can be published set">
         {{ govukFieldset({
           legend: {
             text: "Can the barrier be published on GOV.UK?",
@@ -106,14 +89,9 @@ Barrier publication – {{ serviceName }} – GOV.UK Prototype Kit
         </p>
   
         {{ govukButton({
-          text: "Continue"
+          text: "Save and return"
         }) }}
-
-        {{ govukButton({
-          text: "Save and exit",
-          classes: "govuk-button--secondary",
-          href: "#"
-        }) }}
+        <a href="#" class="govuk-link form-cancel">Cancel</a>
   
         </form>
 

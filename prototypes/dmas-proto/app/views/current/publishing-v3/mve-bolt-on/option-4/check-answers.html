@@ -4,6 +4,15 @@
   About the barrier – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
+{% block header %}
+<!-- MASTHEAD SECTION -->
+    {% include "/includes/dmasheader.njk" %}
+    <div class="datahub-header__navigation-container">
+      {% include "/includes/datahubnavbar.njk" %}
+      {% include "/includes/dmasnavbar-withrole.njk" %}
+    </div>
+{% endblock %}
+
 {% block beforeContent %}
   {{ govukBackLink({
   text: "Back",
@@ -14,9 +23,10 @@
 {% block content %}
 
 <div class="govuk-width-container">
-    <main class="govuk-main-wrapper " id="main-content" role="main">
+    <main class="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0" id="main-content" role="main">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds-from-desktop">
+          <form class="form" action="barrier-confirmation" method="post">
           <!-- <span class="govuk-caption-m">Section 9 of 9</span> -->
           <h1 class="govuk-heading-l">Check your answers</h1>
           <!-- ABOUT THE BARRIER -->
@@ -241,7 +251,7 @@
             </table>
 
 
-          <!-- PUBLIC VIEW STATUS -->
+          <!-- PUBLIC VIEW INFORMATION -->
           <h2 class="govuk-heading-m">Barrier publication</h2>
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
                 <div class="govuk-summary-list__row">
@@ -249,6 +259,7 @@
                     Publishing
                   </dt>
                   <dd class="govuk-summary-list__value">
+                    <!-- SHOW THE PUBLIC VIEW STATUS -->
                     {% if data['barrier-public-view-status'] %}{{ data['barrier-public-view-status'] }} {% else %} Can be published {% endif %}
                   </dd>
                   <dd class="govuk-summary-list__actions">
@@ -257,8 +268,8 @@
                     </a>
                   </dd>
                 </div>
-            {% if data['barrier-public-view-status'] == 'Can be published' %}
-                
+            <!-- IF ALLOWED TO BE PUBLISHED -->
+            {% if data['barrier-public-view-status'] == 'Can be published' %}                
                 {% if data['complete-title-summary'] %}
                   <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
@@ -287,6 +298,7 @@
                     </dd>
                   </div>
                 {% endif %}
+              <!-- IF NOT ALLOWED TO BE PUBLISHED -->
               {% elseif data['barrier-public-view-status'] == 'Cannot be published' %}
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
@@ -318,7 +330,7 @@
             {% endif %}
           </dl>
 
-          <form class="form" action="barrier-confirmation" method="post">
+
     
         {{ govukButton({
           text: "Continue"

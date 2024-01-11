@@ -4,6 +4,15 @@
   Public title and summary – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
+{% block header %}
+<!-- MASTHEAD SECTION -->
+    {% include "/includes/dmasheader.njk" %}
+    <div class="datahub-header__navigation-container">
+      {% include "/includes/datahubnavbar.njk" %}
+      {% include "/includes/dmasnavbar-withrole.njk" %}
+    </div>
+{% endblock %}
+
 {% block beforeContent %}
   {{ govukBackLink({
   text: "Back",

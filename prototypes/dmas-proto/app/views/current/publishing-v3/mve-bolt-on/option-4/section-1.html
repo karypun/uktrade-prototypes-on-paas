@@ -4,11 +4,13 @@
   About the barrier – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
-{% block beforeContent %}
-  {{ govukBackLink({
-  text: "Back",
-  href: "javascript:window.history.back()"
-}) }}
+{% block header %}
+<!-- MASTHEAD SECTION -->
+    {% include "/includes/dmasheader.njk" %}
+    <div class="datahub-header__navigation-container">
+      {% include "/includes/datahubnavbar.njk" %}
+      {% include "/includes/dmasnavbar-withrole.njk" %}
+    </div>
 {% endblock %}
 
 {% block content %}

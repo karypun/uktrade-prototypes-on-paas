@@ -1,16 +1,16 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+  Report a barrier – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block header %}
-  <!-- Blank header with no service name for the start page -->
-  {{ govukHeader() }}
-{% endblock %}
-
-{% block beforeContent %}
-
+<!-- MASTHEAD SECTION -->
+    {% include "/includes/dmasheader.njk" %}
+    <div class="datahub-header__navigation-container">
+      {% include "/includes/datahubnavbar.njk" %}
+      {% include "/includes/dmasnavbar-withrole.njk" %}
+    </div>
 {% endblock %}
 
 {% block content %}

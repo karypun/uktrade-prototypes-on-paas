@@ -1,0 +1,54 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Page name – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<h2>Publish states</h2>
+
+
+<p class="govuk-body">Use these links to simulate the various states the public view tab will a</p>
+<ul class="govuk-list">
+    <li>
+        <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information?barrier-public-view-status=Can be published&public-title=&public-summary=&publicViewState=&conf-banner-state=#public-view-tab">Barrier created - no title or summary supplied</a>
+    </li>
+    <li>
+      <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information?barrier-public-view-status=Can be published&public-title=&public-summary=&publicViewState=Can be published&conf-banner-state=can be published set#public-view-tab">Publishing allowed</a>
+    </li>
+    <li>
+      <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information?barrier-public-view-status=Cannot be published&public-title&public-summary&publicViewState=Cannot be published&conf-banner-state=can be published set#public-view-tab">Publishing not allowed</a>
+    </li>
+    <li>
+        (Not yet designed) <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information?barrier-public-view-status=Cannot be published#public-view-tab">Publishing not allowed but title and description added at some point</a>
+      </li>
+    <li>
+      <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information?barrier-public-view-status=Can be published&public-title&public-summary&publicViewState=title or summary not added&conf-banner-state=can be published set#public-view-tab">Publishing allowed, no title or summary</a>
+    </li>
+    <li>
+        <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information?barrier-public-view-status=Can be published&public-title=Electronics to Iceland&public-summary&publicViewState=title or summary not added&conf-banner-state=public title set#public-view-tab">Publishing allowed, title added, no summary</a>
+    </li>
+    <li>
+        <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information?barrier-public-view-status=Can be published&public-title=Electronics to Iceland&public-summary=Exporting electronics to Iceland are frozen at present.&approval-status=&publicViewState=awaiting approval&conf-banner-state=public summary set#public-view-tab">Publishing allowed, title added, summary added, not yet approved</a>
+    </li>
+    <li>
+        <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information?barrier-public-view-status=Can be published&public-title=Electronics to Iceland&public-summary=Exporting electronics to Iceland are frozen at present.&approval-status=approved&publish-status=&publicViewState=approved&conf-banner-state=approval set#public-view-tab">Publishing allowed, title added, summary added, approved, not published</a>
+    </li>
+    <li>
+        (Not yet designed) <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information?barrier-public-view-status=Can be published&public-title=Electronics to Iceland&public-summary=Exporting electronics to Iceland are frozen at present.&approval-status=approved&publish-status=&publicViewState=rejected&conf-banner-state=rejected set#public-view-tab">Publishing allowed, title added, summary added, approved, rejected</a>
+    </li>
+    <li>
+        <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information?barrier-public-view-status=Can be published&public-title=Electronics to Iceland&public-summary=Exporting electronics to Iceland are frozen at present.&approval-status=approved&publish-status=published&publicViewState=published&conf-banner-state=published set#public-view-tab">Publishing allowed, title added, summary added, approved, published</a>
+    </li>
+  </ul>
+
+
+{% endblock %}

@@ -4,8 +4,14 @@
             <div class="barrier-summary__heading flex justify-between align-end">
                 <div>
                     <p class="barrier-summary__code">B-23-T65</p>
-                    <h1 class="barrier-summary__heading__text">Electronics to Iceland</h1>
-                    <p class="barrier-summary__heading__country">Exporting electronics to Iceland are frozen at present.</p>
+                    <h1 class="barrier-summary__heading__text">
+                        {% if data['barrier-title'] %}
+                        {{ data['barrier-title'] }}
+                      {% else %}
+                        Electronics to Iceland
+                      {% endif %} 
+                    </h1>
+                    <p class="barrier-summary__heading__country">Iceland</p>
                     <!-- Tag work will go here to be above the change links in layout -->
                     
                         <div class="barrier-summary__edit-links">

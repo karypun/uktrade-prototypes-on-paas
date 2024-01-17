@@ -26,14 +26,33 @@
     <div class="govuk-grid-column-two-thirds">
       <span class="govuk-caption-m">Section 4 of 11</span>
       <h1 class="govuk-heading-l">
-        Trade direction
+        Trade direction affected
       </h1>
 
       <form class="form" action="section-5" method="post">
 
-        <p>
-          You would select the trade direction affected at this point.
-        </p>
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "trade-direction",
+          fieldset: {
+            legend: {
+              text: "Which trade direction does this barrier affect?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "exporting",
+              text: "Exporting from the UK or investing overseas"
+            },
+            {
+              value: "importing",
+              text: "Importing or investing into the UK"
+            }
+          ]
+        }) }}
 
         {{ govukButton({
           text: "Continue"

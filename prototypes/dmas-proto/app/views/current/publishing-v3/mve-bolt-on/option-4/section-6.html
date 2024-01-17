@@ -31,9 +31,17 @@
 
       <form class="form" action="section-7" method="post">
 
-        <p>
-          You would select the companies affected at this point.
-        </p>
+        <div id="selected-companies-list" class="selection-list restrict-width govuk-!-margin-bottom-5">
+          <h3 class="selection-list__heading">Selected companies</h3>
+          <ul class="selection-list__list">
+              <li id="04301762" class="selection-list__list__item"><span>TEST LIMITED</span><span id="remove-company-button" class="selection-list__list__item__remove-form__submit">remove</span></li>
+              {{ govukButton({
+                text: "Add another company",
+                classes: "govuk-button--secondary govuk-!-margin-bottom-2",
+                href: "#"
+              }) }}
+          </ul>
+      </div>
 
         {{ govukButton({
           text: "Continue"

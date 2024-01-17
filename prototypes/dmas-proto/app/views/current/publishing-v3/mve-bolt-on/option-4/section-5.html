@@ -31,9 +31,31 @@
 
       <form class="form" action="section-6" method="post">
 
-        <p>
-          You would select the sectors affected at this point.
-        </p>
+        <div class="selection-list restrict-width govuk-!-margin-bottom-4">
+          <h3 class="selection-list__heading">Main sector affected</h3>
+          <p class="govuk-hint">Add the sector affected the most by the barrier</p>
+          {{ govukSelect({
+            id: "main-sector",
+            name: "main-sector",
+            classes: "govuk-!-width-two-thirds govuk-!-margin-bottom-0",
+            items: [
+              {
+                value: "Aerospace",
+                text: "Aerospace"
+              }
+            ]
+          }) }}
+        </div>
+
+        <div class="selection-list restrict-width govuk-!-margin-bottom-5">
+          <h3 class="selection-list__heading">Other sectors (optional)</h3>
+          <p class="govuk-hint">Add all the other sectors affected by the barrier</p>
+          {{ govukButton({
+            text: "Add sector",
+            classes: "govuk-button--secondary govuk-!-margin-bottom-2",
+            href: "#"
+          }) }}
+      </div>
 
         {{ govukButton({
           text: "Continue"

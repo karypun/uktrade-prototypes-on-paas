@@ -31,9 +31,85 @@
 
       <form class="form" action="section-8" method="post">
 
-        <p>
-          You would select the goods, services or investments affected at this point.
-        </p>
+        {{ govukCheckboxes({
+          name: "type-of-export",
+          fieldset: {
+            legend: {
+              text: "Which types of exports does the barrier affect?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "Select all that apply."
+          },
+          items: [
+            {
+              value: "goods",
+              text: "Goods"
+            },
+            {
+              value: "services",
+              text: "Services"
+            },
+            {
+              value: "investments",
+              text: "Investments"
+            }
+          ]
+        }) }}
+
+        {{ govukCharacterCount({
+          name: "which-affected",
+          id: "which-affected",
+          rows: 5,
+          label: {
+            text: "Which goods, services or investments does the barrier affect?",
+            classes: "govuk-label--s",
+            isPageHeading: true
+          },
+          hint: {
+            text: "Enter all goods, services or investments affected. Be as specific as you can. Put each item on a new line."
+          }
+        }) }}
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          name: "hs-codes",
+          fieldset: {
+            legend: {
+              text: "Enter an HS commodity code (optional)",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "HS codes help DBT analysts evaluate an prioritise barriers. Find the right codes for your goods if you aren't sure which to use. You can copy and paste multiple codes separated by commas into the first box."
+          },
+          items: [
+            {
+              value: "iceland",
+              text: "Iceland"
+            },
+            {
+              value: "united kingdom",
+              text: "United Kingdom"
+            }
+          ]
+        }) }}
+
+        <div class="govuk-form-group commodity-code-form-group">
+          <div class="codebox__container"><label class="sr-only govuk-visually-hidden" for="code_0">First two digits of your HS commodity code.</label><input id="code_0" class="govuk-input govuk-input--width-2 commodity-code-input" name="code_0" type="number" maxlength="2" inputmode="numeric" pattern="[0-9]{2}"></div>
+          <div class="codebox__container"><label class="sr-only govuk-visually-hidden" for="code_0">First two digits of your HS commodity code.</label><input id="code_0" class="govuk-input govuk-input--width-2 commodity-code-input" name="code_0" type="number" maxlength="2" inputmode="numeric" pattern="[0-9]{2}"></div>
+          <div class="codebox__container"><label class="sr-only govuk-visually-hidden" for="code_0">First two digits of your HS commodity code.</label><input id="code_0" class="govuk-input govuk-input--width-2 commodity-code-input" name="code_0" type="number" maxlength="2" inputmode="numeric" pattern="[0-9]{2}"></div>
+          <div class="codebox__container"><label class="sr-only govuk-visually-hidden" for="code_0">First two digits of your HS commodity code.</label><input id="code_0" class="govuk-input govuk-input--width-2 commodity-code-input" name="code_0" type="number" maxlength="2" inputmode="numeric" pattern="[0-9]{2}"></div>
+          <div class="codebox__container"><label class="sr-only govuk-visually-hidden" for="code_0">First two digits of your HS commodity code.</label><input id="code_0" class="govuk-input govuk-input--width-2 commodity-code-input" name="code_0" type="number" maxlength="2" inputmode="numeric" pattern="[0-9]{2}"></div>
+        </div>
+
+      </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
 
         {{ govukButton({
           text: "Continue"

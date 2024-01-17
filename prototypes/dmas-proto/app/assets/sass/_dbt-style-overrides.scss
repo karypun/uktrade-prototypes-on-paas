@@ -13,3 +13,10 @@
     margin-right: auto;
 
 }
+
+
+// Override the gov conf box max-width which is 605px as DMAS does not max at 960px grid
+.govuk-notification-banner__content > * {
+    box-sizing: border-box;
+    max-width: 960px;
+}

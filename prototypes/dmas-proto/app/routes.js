@@ -644,6 +644,22 @@ router.post('/barrier-mve-pv-allowed', function(request, response) {
     }
 })
 
+// Route to take user from submitting check answers to barrier information page and show relevant confirm banner
+router.post('/mve-submission', function(request, response) {
+
+    var barrierState = request.session.data['barrier-public-view-status']
+    var publicTitle = request.session.data['public-title']
+    var publicSummary = request.session.data['public-summary']
+
+    if (barrierState == "Can be published" && publicTitle && publicSummary){
+        response.redirect("current/publishing-v3/mve-bolt-on/option-4/barrier-information?conf-banner-state=mve can be published and title and summary")
+    } else if (barrierState == "Cannot be published") {
+        response.redirect("current/publishing-v3/mve-bolt-on/option-4/barrier-information?conf-banner-state=mve cannot be published")
+    } else {
+        response.redirect("current/publishing-v3/mve-bolt-on/option-4/barrier-information?conf-banner-state=mve can be published no title and summary")
+    }
+})
+
 
 // ------------------------------
 // MVE BOLT-ON ROUTING - OPTION 1
@@ -706,4 +722,11 @@ router.get('/barrier-search/search', function(request, response) {
         barriers: random_barriers,
         barrier_count: barrier_count
     })
+})
+
+// Csat submission pretend submit
+router.post('/csat-submission', function(request, response) {
+
+        response.redirect("current/publishing-v3/mve-bolt-on/option-4/barrier-information?conf-banner-state=")
+
 })

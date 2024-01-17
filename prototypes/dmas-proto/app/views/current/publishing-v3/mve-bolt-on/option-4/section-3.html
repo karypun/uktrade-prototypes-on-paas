@@ -31,9 +31,27 @@ Barrier location – {{ serviceName }} – GOV.UK Prototype Kit
 
       <form class="form" action="section-4" method="post">
 
-        <p>
-          You would select the barrier location at this point.
-        </p>
+        {{ govukSelect({
+          id: "barrier-location",
+          name: "barrier-location",
+          label: {
+            text: "Choose a location"
+          },
+          items: [
+            {
+              value: "India",
+              text: "India"
+            }
+          ],
+          label: {
+            text: "Which location does the barrier relate to?",
+            classes: "govuk-label--s",
+            isPageHeading: true
+          },
+          hint: {
+            text: "Include the product, service or investment and the type of problem. For example, Import quotas for steel rods."
+          }
+        }) }}
 
         {{ govukButton({
           text: "Continue"

@@ -23,7 +23,12 @@
     {% include "/includes/masthead.njk" %}
 {% endblock %}
 
+
+
 {% block content %}
+<div id="top">
+  
+</div>
 
 <!-- TAGS SECTION -->
 
@@ -48,6 +53,21 @@
             </a>
           </li>
           <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#barrier-team-tab">
+              Barrier team
+            </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#barrier-assessment-tab">
+              Assessment
+            </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#barrier-history-tab">
+              History
+            </a>
+          </li>
+          <li class="govuk-tabs__list-item">
             <a class="govuk-tabs__tab" href="#public-view-tab">
               Public view
             </a>
@@ -56,8 +76,7 @@
 
       <!-- BARRIER INFORMATION TAB -->
       <div class="govuk-tabs__panel" id="barrier-info-tab">
-        <h2 class="govuk-heading-l">Barrier headlines</h2>
-
+        <!-- <h2 class="govuk-heading-l">Barrier headlines</h2> -->
         <div class="govuk-grid-row">
           <!-- LEFT HAND COLUMN -->
           <div class="govuk-grid-column-one-half">
@@ -73,11 +92,50 @@
         </div>
       </div>
 
+        <!-- BARRIER TEAM TAB -->
+        <div class="govuk-tabs__panel" id="barrier-team-tab">
+          <h2 class="govuk-heading-l">Barrier team</h2>
+          <div class="govuk-grid-row">
+            <!-- LEFT HAND COLUMN -->
+            <div class="govuk-grid-column-one-half">                
+            </div>
+            <!-- RIGHT HAND COLUMN -->
+            <div class="govuk-grid-column-one-half">
+            </div>
+          </div>
+        </div>
+
+        <!-- BARRIER TEAM TAB -->
+        <div class="govuk-tabs__panel" id="barrier-assessment-tab">
+          <h2 class="govuk-heading-l">Barrier assessment</h2>
+          <div class="govuk-grid-row">
+            <!-- LEFT HAND COLUMN -->
+            <div class="govuk-grid-column-one-half">                
+            </div>
+            <!-- RIGHT HAND COLUMN -->
+            <div class="govuk-grid-column-one-half">
+            </div>
+          </div>
+        </div>
+
+        <!-- BARRIER HISTORY TAB -->
+        <div class="govuk-tabs__panel" id="barrier-history-tab">
+          <h2 class="govuk-heading-l">Barrier history</h2>
+          <div class="govuk-grid-row">
+            <!-- LEFT HAND COLUMN -->
+            <div class="govuk-grid-column-one-half">                
+            </div>
+            <!-- RIGHT HAND COLUMN -->
+            <div class="govuk-grid-column-one-half">
+            </div>
+          </div>
+        </div>
+
       <!-- PUBLIC VIEW TAB -->
       <div class="govuk-tabs__panel" id="public-view-tab">
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-full">
-            <h2 class="govuk-heading-l">Public view</h2>
+            <!-- <h2 class="govuk-heading-l">Public view</h2> -->
 
             <div class="govuk-grid-row">
               <!-- LEFT HAND COLUMN -->
@@ -86,6 +144,7 @@
                 {% include "/includes/publishing/pv-actions-set-public-title_desc.njk" %}
                 {% include "/includes/publishing/pv-actions-set-approvals.njk" %}
                 {% include "/includes/publishing/pv-actions-set-publish.njk" %}
+                {% include "/includes/publishing/pv-additional-information.njk" %}
               </div>
 
               <!-- RIGHT HAND COLUMN -->

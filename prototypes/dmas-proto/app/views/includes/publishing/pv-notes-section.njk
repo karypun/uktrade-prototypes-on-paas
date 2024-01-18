@@ -1,0 +1,53 @@
+{% set confBannerState = data['conf-banner-state'] %}
+
+
+<!-- MVE PUBLISH ALLOWED AND TITLE / SUMMARY PROVIDED -->
+{% if confBannerState == 'mve can be published and title and summary'%}
+    <ol class="event-list js-delete-modal-container">            
+        <li class="event-list__item event-list__item--unseen">
+            <h4 class="event-list__item__heading">17 January 2024<span class="event-list__item__heading__recede"> at 12:30 p.m. (GMT)</span></h4>
+            <p class="event-list__item__text">
+                Barrier public summary was updated by Test User
+            </p>
+        </li>
+    
+        <li class="event-list__item event-list__item--unseen">
+            <h4 class="event-list__item__heading">17 January 2024<span class="event-list__item__heading__recede"> at 12:30 p.m. (GMT)</span></h4>
+            <p class="event-list__item__text">
+                Barrier public title was updated by Test User
+            </p>
+        </li>
+    
+        <li class="event-list__item event-list__item--unseen">
+            <h4 class="event-list__item__heading">17 January 2024<span class="event-list__item__heading__recede"> at 12:29 p.m. (GMT)</span></h4>
+            <p class="event-list__item__text">
+                Barrier publish status was changed to <strong>Allowed</strong> by Test User
+            </p>
+        </li>
+    </ol>
+{% endif %}
+
+<!-- MVE PUBLISH ALLOWED AND TITLE / SUMMARY NOT PROVIDED -->
+{% if confBannerState == 'mve can be published no title and summary'%}
+    <ol class="event-list js-delete-modal-container">
+        <li class="event-list__item event-list__item--unseen">
+            <h4 class="event-list__item__heading">17 January 2024<span class="event-list__item__heading__recede"> at 12:29 p.m. (GMT)</span></h4>
+            <p class="event-list__item__text">
+                Barrier publish status was changed to <strong>Allowed</strong> by Test User
+            </p>
+        </li>
+    </ol>
+{% endif %}
+
+<!-- MVE PUBLISH NOT ALLOWED -->
+{% if confBannerState == 'mve cannot be published'%}
+    <ol class="event-list js-delete-modal-container">
+        <li class="event-list__item event-list__item--unseen">
+            <h4 class="event-list__item__heading">17 January 2024<span class="event-list__item__heading__recede"> at 12:29 p.m. (GMT)</span></h4>
+            <p class="event-list__item__text">
+                Barrier publish status was changed to <strong>Not allowed</strong> by Test User
+            </p>
+        </li>
+    </ol>
+
+{% endif %}

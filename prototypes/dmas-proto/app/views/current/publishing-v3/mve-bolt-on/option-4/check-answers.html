@@ -156,7 +156,7 @@
                 Other sectors affected
               </dt>
               <dd class="govuk-summary-list__value">
-                None
+                
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="#">
@@ -276,7 +276,7 @@
                       Public title
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      {% if data['public-title'] %}{{ data['public-title'] }} {% else %} Title not provided {% endif %}
+                      {% if data['public-title'] %}{{ data['public-title'] }} {% else %}  {% endif %}
                     </dd>
                     <dd class="govuk-summary-list__actions">
                       <a class="govuk-link" href="section-10">
@@ -289,7 +289,7 @@
                       Public summary
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      {% if data['public-summary'] %}{{ data['public-summary'] }} {% else %} Summary not provided {% endif %}
+                      {% if data['public-summary'] %}{{ data['public-summary'] }} {% else %}  {% endif %}
                     </dd>
                     <dd class="govuk-summary-list__actions">
                       <a class="govuk-link" href="section-11">
@@ -305,7 +305,7 @@
                       Reason
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      {% if data['barrier-not-allowed-desc'] %}{{ data['barrier-not-allowed-desc'] }} {% else %} No reason supplied {% endif %}
+                      {% if data['barrier-not-allowed-desc'] %}{{ data['barrier-not-allowed-desc'] }} {% else %}  {% endif %}
                     </dd>
                     <dd class="govuk-summary-list__actions">
                       <a class="govuk-link" href="section-8">

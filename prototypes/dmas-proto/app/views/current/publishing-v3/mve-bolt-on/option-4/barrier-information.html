@@ -34,7 +34,7 @@
 
 <!-- CONFIRMATION BANNER SECTION -->
 
-{% include "/includes/confirmation-banners.njk" %}
+{% include "/includes/publishing/pv-confirmation-banners.njk" %}
 
 <!-- TABS SECTION -->
 
@@ -47,7 +47,7 @@
 
     <div class="govuk-tabs govuk-!-padding-top-8" data-module="govuk-tabs">
         <ul class="govuk-tabs__list">
-          <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+          <li class="govuk-tabs__list-item">
             <a class="govuk-tabs__tab" href="#barrier-info-tab">
               Barrier information
             </a>
@@ -67,7 +67,7 @@
               History
             </a>
           </li>
-          <li class="govuk-tabs__list-item">
+          <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
             <a class="govuk-tabs__tab" href="#public-view-tab">
               Public view
             </a>
@@ -150,6 +150,7 @@
               <!-- RIGHT HAND COLUMN -->
               <div class="govuk-grid-column-one-half">
                 {% include "/includes/publishing/pv-status-card.njk" %}
+                {% include "/includes/publishing/pv-notes-section.njk" %}
               </div>
 
             </div>

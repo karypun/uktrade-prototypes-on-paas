@@ -1,0 +1,90 @@
+{% extends "layouts/main.html" %}
+
+{# {% set bodyClasses = 'dmas-align-override dmas-width' %} #}
+{% set userType = 'generaluser' %}
+{% set barrierInformation = data.sampleBarrierData %}
+
+{#
+{% if publicViewState is not null %}
+{% set publicViewState = 'notset' %}
+{% endif %} #}
+
+{% block pageTitle %}
+  Barrier information – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+<!-- MASTHEAD SECTION -->
+    {% include "/includes/dmasheader.njk" %}
+    <div class="datahub-header__navigation-container">
+      {% include "/includes/datahubnavbar.njk" %}
+      {% include "/includes/dmasnavbar-withrole.njk" %}
+    </div>
+    {% include "/includes/masthead.njk" %}
+{% endblock %}
+
+
+
+{% block content %}
+<div id="top">
+  
+</div>
+
+<!-- TAGS SECTION -->
+
+<!-- CONFIRMATION BANNER SECTION -->
+
+{% include "/includes/publishing/pv-confirmation-banners.njk" %}
+
+<!-- TABS SECTION -->
+
+{% set pvPublishAllowedStatus = data['barrier-public-view-status'] %}
+{% set pvTitle = data['public-title'] %}
+{% set pvSummary = data['public-summary'] %}
+{% set pvApprovalStatus = data['approval-status'] %}
+{% set pvPublishStatus = data['publish-status'] %}
+
+
+
+        <ul class="page-tabs page-tabs--no-margin dashboard-tabs">
+          <li class="page-tabs__tab">
+            <a class="page-tabs__tab__text" href="barrier-information">
+              Barrier information
+            </a>
+          </li>
+          <li class="page-tabs__tab">
+            <a class="page-tabs__tab__text" href="barrier-information-team">
+              Barrier team
+            </a>
+          </li>
+          <li class="page-tabs__tab page-tabs__tab--active">
+            <a class="page-tabs__tab__text" href="#barrier-info-tab">
+              Assessment
+            </a>
+          </li>
+          <li class="page-tabs__tab">
+            <a class="page-tabs__tab__text" href="barrier-information-history">
+              History
+            </a>
+          </li>
+          <li class="page-tabs__tab">
+            <a class="page-tabs__tab__text" href="barrier-information-public">
+              Public view
+            </a>
+          </li>
+        </ul>
+
+        <!-- BARRIER ASSESSMENT TAB -->
+        <div id="barrier-assessment-tab">
+          <h2 class="govuk-heading-l">Barrier assessment</h2>
+          <div class="govuk-grid-row">
+            <!-- LEFT HAND COLUMN -->
+            <div class="govuk-grid-column-one-half">                
+            </div>
+            <!-- RIGHT HAND COLUMN -->
+            <div class="govuk-grid-column-one-half">
+            </div>
+          </div>
+        </div>
+
+{% endblock %}

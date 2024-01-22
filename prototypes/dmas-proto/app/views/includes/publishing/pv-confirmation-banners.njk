@@ -2,163 +2,169 @@
 {% set pvPublishAllowedStatus = data['barrier-public-view-status'] %}
 {# Confirmation banner state: {{ confBannerState }} #}
 
-<!-- BARRIER PUBLIC STATUS ADDED/UPDATED -->
-{% if confBannerState == 'can be published set'%}
-    {% set html %}
-    <h3 class="govuk-notification-banner__heading">
-        Publish status set
-    </h3>
-    {% if pvPublishAllowedStatus == 'Can be published' %}
-        <p class="govuk-body">You successfully set the public view status to <strong>can be published</strong>.</p>
-    {% else %}
-        <p class="govuk-body">You successfully set the public view status to <strong>cannot be published</strong>.</p>
+<div class="govuk-grid-row govuk-!-margin-bottom-4 govuk-!-padding-bottom-0">
+    <div class="govuk-grid-column-full">
+
+    <!-- BARRIER PUBLIC STATUS ADDED/UPDATED -->
+    {% if confBannerState == 'can be published set'%}
+        {% set html %}
+        <h3 class="govuk-notification-banner__heading">
+            Publish status set
+        </h3>
+        {% if pvPublishAllowedStatus == 'Can be published' %}
+            <p class="govuk-body">You successfully set the public view status to <strong>can be published</strong>.</p>
+        {% else %}
+            <p class="govuk-body">You successfully set the public view status to <strong>cannot be published</strong>.</p>
+        {% endif %}
+        {% endset %}
+
+        {{ govukNotificationBanner({
+        html: html,
+        type: "success",
+        classes: "govuk-!-margin-bottom-0 govuk-!-padding-bottom-0"
+        }) }}
     {% endif %}
-    {% endset %}
 
-    {{ govukNotificationBanner({
-    html: html,
-    type: "success",
-    classes: "govuk-!-margin-bottom-0 govuk-!-padding-bottom-0"
-    }) }}
-{% endif %}
+    <!-- BARRIER PUBLIC TITLE ADDED/UPDATED -->
+    {% if confBannerState == 'public title set'%}
+        {% set html %}
+        <h3 class="govuk-notification-banner__heading">
+            Public title set
+        </h3>
+            <p class="govuk-body">You successfully set the public title.</p>
+        {% endset %}
 
-<!-- BARRIER PUBLIC TITLE ADDED/UPDATED -->
-{% if confBannerState == 'public title set'%}
-    {% set html %}
-    <h3 class="govuk-notification-banner__heading">
-        Public title set
-    </h3>
-        <p class="govuk-body">You successfully set the public title.</p>
-    {% endset %}
+        {{ govukNotificationBanner({
+        html: html,
+        type: "success",
+        classes: "govuk-!-margin-bottom-0 govuk-!-padding-bottom-0"
+        }) }}
+    {% endif %}
 
-    {{ govukNotificationBanner({
-    html: html,
-    type: "success",
-    classes: "govuk-!-margin-bottom-0 govuk-!-padding-bottom-0"
-    }) }}
-{% endif %}
+    <!-- BARRIER PUBLIC SUMMARY ADDED/UPDATED -->
+    {% if confBannerState == 'public summary set'%}
+        {% set html %}
+        <h3 class="govuk-notification-banner__heading">
+            Public title set
+        </h3>
+            <p class="govuk-body">You successfully set the public summary.</p>
+        {% endset %}
 
-<!-- BARRIER PUBLIC SUMMARY ADDED/UPDATED -->
-{% if confBannerState == 'public summary set'%}
-    {% set html %}
-    <h3 class="govuk-notification-banner__heading">
-        Public title set
-    </h3>
-        <p class="govuk-body">You successfully set the public summary.</p>
-    {% endset %}
+        {{ govukNotificationBanner({
+        html: html,
+        type: "success",
+        classes: "govuk-!-margin-bottom-0 govuk-!-padding-bottom-0"
+        }) }}
+    {% endif %}
 
-    {{ govukNotificationBanner({
-    html: html,
-    type: "success",
-    classes: "govuk-!-margin-bottom-0 govuk-!-padding-bottom-0"
-    }) }}
-{% endif %}
+    <!-- BARRIER PUBLIC APPROVAL STATUS UPDATED -->
+    {% if confBannerState == 'approval set'%}
+        {% set html %}
+        <h3 class="govuk-notification-banner__heading">
+            Barrier approved
+        </h3>
+            <p class="govuk-body">You successfully approved the barrier. The content team will now review.</p>
+        {% endset %}
 
-<!-- BARRIER PUBLIC APPROVAL STATUS UPDATED -->
-{% if confBannerState == 'approval set'%}
-    {% set html %}
-    <h3 class="govuk-notification-banner__heading">
-        Barrier approved
-    </h3>
-        <p class="govuk-body">You successfully approved the barrier. The content team will now review.</p>
-    {% endset %}
+        {{ govukNotificationBanner({
+        html: html,
+        type: "success",
+        classes: "govuk-!-margin-bottom-0 govuk-!-padding-bottom-0"
+        }) }}
+    {% endif %}
 
-    {{ govukNotificationBanner({
-    html: html,
-    type: "success",
-    classes: "govuk-!-margin-bottom-0 govuk-!-padding-bottom-0"
-    }) }}
-{% endif %}
+    <!-- BARRIER PUBLIC PUBLISH STATUS UPDATED -->
+    {% if confBannerState == 'rejected set'%}
+        {% set html %}
+        <h3 class="govuk-notification-banner__heading">
+            Barrier rejected for publication
+        </h3>
+            <p class="govuk-body">You successfully rejected the barrier for publication.</p>
+        {% endset %}
 
-<!-- BARRIER PUBLIC PUBLISH STATUS UPDATED -->
-{% if confBannerState == 'rejected set'%}
-    {% set html %}
-    <h3 class="govuk-notification-banner__heading">
-        Barrier rejected for publication
-    </h3>
-        <p class="govuk-body">You successfully rejected the barrier for publication.</p>
-    {% endset %}
+        {{ govukNotificationBanner({
+        html: html,
+        type: "success",
+        classes: "govuk-!-margin-bottom-0 govuk-!-padding-bottom-0"
+        }) }}
+    {% endif %}
 
-    {{ govukNotificationBanner({
-    html: html,
-    type: "success",
-    classes: "govuk-!-margin-bottom-0 govuk-!-padding-bottom-0"
-    }) }}
-{% endif %}
+    <!-- BARRIER PUBLIC PUBLISH STATUS UPDATED -->
+    {% if confBannerState == 'published set'%}
+        {% set html %}
+        <h3 class="govuk-notification-banner__heading">
+            Barrier published
+        </h3>
+            <p class="govuk-body">You successfully published the barrier onto <a class="govuk-notification-banner__link" href="#">Check an International Trade Barrier.</a></p>
+        {% endset %}
 
-<!-- BARRIER PUBLIC PUBLISH STATUS UPDATED -->
-{% if confBannerState == 'published set'%}
-    {% set html %}
-    <h3 class="govuk-notification-banner__heading">
-        Barrier published
-    </h3>
-        <p class="govuk-body">You successfully published the barrier onto <a class="govuk-notification-banner__link" href="#">Check an International Trade Barrier.</a></p>
-    {% endset %}
+        {{ govukNotificationBanner({
+        html: html,
+        type: "success",
+        classes: "govuk-!-margin-bottom-0 govuk-!-padding-bottom-0"
+        }) }}
+    {% endif %}
 
-    {{ govukNotificationBanner({
-    html: html,
-    type: "success",
-    classes: "govuk-!-margin-bottom-0 govuk-!-padding-bottom-0"
-    }) }}
-{% endif %}
+    <!-- MVE PUBLISH ALLOWED AND TITLE / SUMMARY PROVIDED -->
+    {% if confBannerState == 'mve can be published and title and summary'%}
+        {% set html %}
+        <h3 class="govuk-notification-banner__heading">
+            Barrier successfully created
+        </h3>
+        <p class="govuk-body">Within the next 30 days, the approver in your region needs to confirm they are happy for the barrier to be published.</p>
+        {% endset %}
 
-<!-- MVE PUBLISH ALLOWED AND TITLE / SUMMARY PROVIDED -->
-{% if confBannerState == 'mve can be published and title and summary'%}
-    {% set html %}
-    <h3 class="govuk-notification-banner__heading">
-        Barrier successfully created
-    </h3>
-    <p class="govuk-body">Within the next 30 days, the approver in your region needs to confirm they are happy for the barrier to be published.</p>
-    {% endset %}
+        {{ govukNotificationBanner({
+        html: html,
+        type: "success",
+        classes: "govuk-!-margin-bottom-0 govuk-!-padding-bottom-0"
+        }) }}
 
-    {{ govukNotificationBanner({
-    html: html,
-    type: "success",
-    classes: "govuk-!-margin-bottom-0 govuk-!-padding-bottom-0"
-    }) }}
+        {% include "/includes/csat-panel.njk" %}
 
-    {% include "/includes/csat-panel.njk" %}
+    {% endif %}
 
-{% endif %}
+    <!-- MVE PUBLISH ALLOWED AND TITLE / SUMMARY NOT PROVIDED -->
+    {% if confBannerState == 'mve can be published no title and summary'%}
+        {% set html %}
+        <h3 class="govuk-notification-banner__heading">
+            Barrier successfully created
+        </h3>
+        <p class="govuk-body">Within the next 30 days:</p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>you need to provide a public title and summary on the <a class="govuk-notification-banner__link" href="#public-view-tab">Public view page</a></li>
+            <li>the approver in your region needs to confirm they are happy for the barrier to be published</li>
+        </ul>
+        {% endset %}
 
-<!-- MVE PUBLISH ALLOWED AND TITLE / SUMMARY NOT PROVIDED -->
-{% if confBannerState == 'mve can be published no title and summary'%}
-    {% set html %}
-    <h3 class="govuk-notification-banner__heading">
-        Barrier successfully created
-    </h3>
-    <p class="govuk-body">Within the next 30 days:</p>
-    <ul class="govuk-list govuk-list--bullet">
-        <li>you need to provide a public title and summary on the <a class="govuk-notification-banner__link" href="#public-view-tab">Public view page</a></li>
-        <li>the approver in your region needs to confirm they are happy for the barrier to be published</li>
-    </ul>
-    {% endset %}
+        {{ govukNotificationBanner({
+        html: html,
+        type: "success",
+        classes: "govuk-!-margin-bottom-0 govuk-!-padding-bottom-0"
+        }) }}
 
-    {{ govukNotificationBanner({
-    html: html,
-    type: "success",
-    classes: "govuk-!-margin-bottom-0 govuk-!-padding-bottom-0"
-    }) }}
+        {% include "/includes/csat-panel.njk" %}
 
-    {% include "/includes/csat-panel.njk" %}
+    {% endif %}
 
-{% endif %}
+    <!-- MVE PUBLISH NOT ALLOWED -->
+    {% if confBannerState == 'mve cannot be published'%}
+        {% set html %}
+        <h3 class="govuk-notification-banner__heading">
+            Barrier successfully created
+        </h3>
+        <p class="govuk-body">You stated that the barrier cannot be published on GOV.UK. This decision will be reviewed by your regional coordinator.</p>
+        {% endset %}
 
-<!-- MVE PUBLISH NOT ALLOWED -->
-{% if confBannerState == 'mve cannot be published'%}
-    {% set html %}
-    <h3 class="govuk-notification-banner__heading">
-        Barrier successfully created
-    </h3>
-    <p class="govuk-body">You stated that the barrier cannot be published on GOV.UK. This decision will be reviewed by your regional coordinator.</p>
-    {% endset %}
+        {{ govukNotificationBanner({
+        html: html,
+        type: "success",
+        classes: "govuk-!-margin-bottom-0 govuk-!-padding-bottom-0"
+        }) }}
 
-    {{ govukNotificationBanner({
-    html: html,
-    type: "success",
-    classes: "govuk-!-margin-bottom-0 govuk-!-padding-bottom-0"
-    }) }}
+        {% include "/includes/csat-panel.njk" %}
 
-    {% include "/includes/csat-panel.njk" %}
+    {% endif %}
 
-{% endif %}
+    </div>
+</div>

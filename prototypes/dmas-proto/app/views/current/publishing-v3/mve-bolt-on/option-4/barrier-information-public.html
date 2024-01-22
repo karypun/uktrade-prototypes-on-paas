@@ -1,0 +1,111 @@
+{% extends "layouts/main.html" %}
+
+{# {% set bodyClasses = 'dmas-align-override dmas-width' %} #}
+{% set userType = 'generaluser' %}
+{% set barrierInformation = data.sampleBarrierData %}
+
+{#
+{% if publicViewState is not null %}
+{% set publicViewState = 'notset' %}
+{% endif %} #}
+
+{% block pageTitle %}
+  Barrier information – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+<!-- MASTHEAD SECTION -->
+    {% include "/includes/dmasheader.njk" %}
+    <div class="datahub-header__navigation-container">
+      {% include "/includes/datahubnavbar.njk" %}
+      {% include "/includes/dmasnavbar-withrole.njk" %}
+    </div>
+    {% include "/includes/masthead.njk" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+<!-- TAGS SECTION -->
+
+<!-- CONFIRMATION BANNER SECTION -->
+
+{% include "/includes/publishing/pv-confirmation-banners.njk" %}
+
+<!-- TABS SECTION -->
+
+{% set pvPublishAllowedStatus = data['barrier-public-view-status'] %}
+{% set pvTitle = data['public-title'] %}
+{% set pvSummary = data['public-summary'] %}
+{% set pvApprovalStatus = data['approval-status'] %}
+{% set pvPublishStatus = data['publish-status'] %}
+
+
+
+        <ul class="page-tabs page-tabs--no-margin dashboard-tabs">
+          <li class="page-tabs__tab">
+            <a class="page-tabs__tab__text" href="barrier-information">
+              Barrier information
+            </a>
+          </li>
+          <li class="page-tabs__tab">
+            <a class="page-tabs__tab__text" href="barrier-information-team">
+              Barrier team
+            </a>
+          </li>
+          <li class="page-tabs__tab">
+            <a class="page-tabs__tab__text" href="barrier-information-assessment">
+              Assessment
+            </a>
+          </li>
+          <li class="page-tabs__tab">
+            <a class="page-tabs__tab__text" href="barrier-information-history">
+              History
+            </a>
+          </li>
+          <li class="page-tabs__tab page-tabs__tab--active">
+            <a class="page-tabs__tab__text" href="#public-view-tab">
+              Public view
+            </a>
+          </li>
+        </ul> 
+        
+      <!-- PUBLIC VIEW TAB -->
+      <div id="public-view-tab">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+            <!-- <h2 class="govuk-heading-l">Public view</h2> -->
+
+            <div class="govuk-grid-row">
+              <!-- LEFT HAND COLUMN -->
+              <div class="govuk-grid-column-one-half">
+                {% include "/includes/publishing/pv-actions-set-public-view-status.njk" %}
+                {% include "/includes/publishing/pv-actions-set-public-title_desc.njk" %}
+                {% include "/includes/publishing/pv-actions-set-approvals.njk" %}
+                {% include "/includes/publishing/pv-actions-set-publish.njk" %}
+                {% include "/includes/publishing/pv-additional-information.njk" %}
+              </div>
+
+              <!-- RIGHT HAND COLUMN -->
+              <div class="govuk-grid-column-one-half">
+                {% include "/includes/publishing/pv-status-card.njk" %}
+                {% include "/includes/publishing/pv-notes-section.njk" %}
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    Publishing allowed status: {{ data['barrier-public-view-status'] }} |
+    Publishing not allowed reason: {{ data['barrier-not-allowed-desc'] }} |
+    Public title: {{ data['public-title'] }} |
+    Public summary: {{ data['public-summary'] }} |
+    Public approval status: {{ data['approval-status'] }} |
+    Public published status: {{ data['publish-status'] }} |
+    Public view state: {{ publicViewState }}  |
+    Conf banner state: {{ data['conf-banner-state'] }}
+
+{% endblock %}

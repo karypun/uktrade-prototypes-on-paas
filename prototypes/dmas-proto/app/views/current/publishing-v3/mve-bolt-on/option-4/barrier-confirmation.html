@@ -30,12 +30,12 @@
       <!-- DISPLAYED IF SET TO NOT ALLOWED TO BE PUBLISHED -->
       {% elseif data['barrier-public-view-status'] == 'Cannot be published' %}
         <p class="govuk-body">You stated that the barrier cannot be published on GOV.UK. This decision will be reviewed by your regional coordinator.</p>
-        <p>We could skip this page and display new style confirm on <a href="barrier-information#public-view-tab">barrier info page</a></p>
+        <p>We could skip this page and display new style confirm on <a href="barrier-information-public">barrier info page</a></p>
         {% else %}
       <!-- DISPLAYED IF NO TITLE AND SUMMARY -->
         <p class="govuk-body">Within the next 30 days:</p>
         <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
-          <li>you need to provide a public title and summary on the <a href="barrier-information#public-view-tab">Public view page</a></li>
+          <li>you need to provide a public title and summary on the <a href="barrier-information-public">Public view page</a></li>
           <li>the approver in your region needs to confirm they are happy for the barrier to be published</li>
         </ul>
       

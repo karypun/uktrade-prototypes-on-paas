@@ -15,13 +15,26 @@
     <p class="govuk-body">This is the prototype for DMAS. This prototype is <strong>NOT</strong> fully functional.</p>
     <p class="govuk-body">Please <a href="/manage-prototype/clear-data" class="govuk-link--no-visited-state">clear data</a> to delete all stored data and reset the prototype between journeys.</p>
     <p class="govuk-body">For questions relating to this prototype please contact <strong>Jonathan Porton</strong>.</p>
+    {% set testingSectionHtml %}
+    <h3>
+      Links for testing (w/c 29th January 2024)
+    </h3>
+    <p class="govuk-body"><a class="govuk-link--no-visited-state" href="current/publishing-v3/mve-bolt-on/option-4/start">MVE Journey</a></p>
+    <p class="govuk-body"><a class="govuk-link--no-visited-state" href="current/publishing-v3/mve-bolt-on/option-4/barrier-information-public">Existing barriers journey</a></p>
+    <p class="govuk-body"><a class="govuk-link--no-visited-state" href="current/publishing-v3/mve-bolt-on/option-4/public-view-tab-simulator">Quick view public tab states</a></p>
+    {% endset %}
+    {{ govukInsetText({
+      html: testingSectionHtml,
+      classes: "govuk-inset-text inset-banner"
+    }) }}
         <ol class="app-task-list">
           <li>
             <h2 class="app-task-list__section">
-              <span class="app-task-list__section-number">Current: </span> &nbsp;
+              <span class="app-task-list__section-number">Current design work: </span> &nbsp;
               Market Access Utilisation
             </h2>
-            <ul class="app-task-list__items">
+            
+            <ul class="app-task-list__items govuk-!-margin-bottom-5">
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">TSS-1368&nbsp;&nbsp;<span class="govuk-body govuk-!-font-size-14">(<a href="https://uktrade.atlassian.net/browse/TSS-1368?atlOrigin=eyJpIjoiZjNiMzAzMGU3MTRkNDMzZTk5M2FmYWRkNDg3MGM2ZTQiLCJwIjoiaiJ9" target="_blank">open in JIRA</a>)</span></span><br>
                 <span class="app-task-list__task-name">
@@ -34,7 +47,7 @@
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">TSS-1130&nbsp;&nbsp;<span class="govuk-body govuk-!-font-size-14">(<a href="https://uktrade.atlassian.net/browse/TSS-1130?atlOrigin=eyJpIjoiZTFjNjViMDcwYjEwNDZiNTkyZDM1MDAwY2ExMDVlOTEiLCJwIjoiaiJ9" target="_blank">open in JIRA</a>)</span>&nbsp;/&nbsp;TSS-1399&nbsp;&nbsp;<span class="govuk-body govuk-!-font-size-14">(<a href="https://uktrade.atlassian.net/browse/TSS-1399?atlOrigin=eyJpIjoiNWUzMTJlM2Y4ODYwNDFkNTljNWY0OWM0MTVjMTVlYmUiLCJwIjoiaiJ9" target="_blank">open in JIRA</a>)</span></span><br>
                 <span class="app-task-list__task-name">
-                  <a href="current/publishing-v3/mve-bolt-on/option-4/barrier-information" class="govuk-link--no-visited-state">
+                  <a href="current/publishing-v3/mve-bolt-on/option-4/barrier-information-public" class="govuk-link--no-visited-state">
                     Existing barriers journey
                   </a>
                 </span>

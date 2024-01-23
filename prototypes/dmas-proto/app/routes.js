@@ -645,7 +645,7 @@ router.post('/barrier-mve-pv-allowed', function(request, response) {
 })
 
 // Route to take user from submitting check answers to barrier information page and show relevant confirm banner
-router.get('/mve-submission', function(request, response) {
+router.post('/mve-submission', function(request, response) {
 
     var barrierState = request.session.data['barrier-public-view-status']
     var publicTitle = request.session.data['public-title']
@@ -661,10 +661,10 @@ router.get('/mve-submission', function(request, response) {
 })
 
 // Route test
-router.post('/var-test-route', function(request, response) {
+router.get('/var-test-route', function(request, response) {
 
     var myRouteVar = 'test route var'
-    response.redirect("current/var-test-confirm")
+    response.redirect("current/var-test-confirm?myvar=test")
 
 })
 

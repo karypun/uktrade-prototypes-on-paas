@@ -661,10 +661,10 @@ router.post('/mve-submission', function(request, response) {
 })
 
 // Route test
-router.get('/var-test-route', function(request, response) {
+router.post('/var-test-route', function(request, response) {
 
-    var myRouteVar = 'test route var'
-    response.redirect("current/var-test-confirm?my-var=test")
+    request.session.data['my-var'] = "test"
+    response.redirect("current/var-test-confirm")
 
 })
 

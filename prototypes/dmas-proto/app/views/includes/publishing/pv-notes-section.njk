@@ -1,6 +1,5 @@
 {% set confBannerState = data['conf-banner-state'] %}
 
-
 <!-- MVE PUBLISH ALLOWED AND TITLE / SUMMARY PROVIDED -->
 {% if confBannerState == 'mve can be published and title and summary'%}
     <ol class="event-list js-delete-modal-container">            
@@ -40,7 +39,7 @@
 {% endif %}
 
 <!-- MVE PUBLISH NOT ALLOWED -->
-{% if confBannerState == 'mve cannot be published'%}
+{% if confBannerState == 'mve-cannot-be-published'%}
     <ol class="event-list js-delete-modal-container">
         <li class="event-list__item event-list__item--unseen">
             <h4 class="event-list__item__heading">17 January 2024<span class="event-list__item__heading__recede"> at 12:29 p.m. (GMT)</span></h4>

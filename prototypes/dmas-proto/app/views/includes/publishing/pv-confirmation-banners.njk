@@ -1,6 +1,6 @@
 {% set confBannerState = data['conf-banner-state'] %}
 {% set pvPublishAllowedStatus = data['barrier-public-view-status'] %}
-{# Confirmation banner state: {{ confBannerState }} #}
+Confirmation banner state: {{ confBannerState }}
 
 <div class="govuk-grid-row govuk-!-margin-bottom-4 govuk-!-padding-bottom-0">
     <div class="govuk-grid-column-full">
@@ -106,7 +106,7 @@
     {% endif %}
 
     <!-- MVE PUBLISH ALLOWED AND TITLE / SUMMARY PROVIDED -->
-    {% if confBannerState == 'mve can be published and title and summary'%}
+    {% if confBannerState == 'mve-can-be-published-and-title-and-summary'%}
         {% set html %}
         <h3 class="govuk-notification-banner__heading">
             Barrier successfully created
@@ -148,7 +148,7 @@
     {% endif %}
 
     <!-- MVE PUBLISH NOT ALLOWED -->
-    {% if confBannerState == 'mve cannot be published'%}
+    {% if confBannerState == 'mve-cannot-be-published'%}
         {% set html %}
         <h3 class="govuk-notification-banner__heading">
             Barrier successfully created

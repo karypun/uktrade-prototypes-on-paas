@@ -15,6 +15,11 @@
 
 <a href="var-test-confirm?my-var=test" class="govuk-link">My test with URL param</a>
 
-
+<h2>Form routes test</h2>
+<form class="form" action="/var-test-route" method="post">
+    {{ govukButton({
+        text: "Submit"
+      }) }}
+</form>
 
 {% endblock %}

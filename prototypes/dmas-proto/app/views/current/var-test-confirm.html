@@ -1,0 +1,22 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Page name – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% set myPageVar = data['my-var'] %}
+
+<p>URL param as session data:{{ data['my-var'] }}</p>
+<p>URL param as var set on page:{{ myPageVar }}</p>
+
+{% endblock %}
+

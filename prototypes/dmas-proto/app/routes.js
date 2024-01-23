@@ -664,7 +664,7 @@ router.post('/mve-submission', function(request, response) {
 router.get('/var-test-route', function(request, response) {
 
     var myRouteVar = 'test route var'
-    response.redirect("current/var-test-confirm?myvar=test")
+    response.redirect("current/var-test-confirm?my-var=test")
 
 })
 

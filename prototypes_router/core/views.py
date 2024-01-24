@@ -7,6 +7,7 @@ from django.conf import settings
 from django.shortcuts import redirect, render
 from django.template.response import SimpleTemplateResponse
 from django.views.static import serve
+from requests import PreparedRequest
 from revproxy.views import ProxyView
 
 prototypes = settings.PROTOTYPES
@@ -61,6 +62,7 @@ class ReverseProxyRouter(ProxyView):
             split_path = path.split("/")
             prototype_name = split_path[0]
 
+            prototype_url = None
             if prototype := prototypes.get(prototype_name, None):
                 # we have a prototype name in the URL, let's store it in the session
                 # this needs to happen first in case they're trying to access a different prototype
@@ -87,6 +89,12 @@ class ReverseProxyRouter(ProxyView):
                 request_url = f"{request_url}{path}"
             else:
                 request_url = f"{request_url}/{path}"
+
+        # now we have a prototype_url, we can append any GET parameters back onto it
+        if query_params := self.request.GET:
+            req = PreparedRequest()
+            req.prepare_url(request_url, query_params)
+            request_url = req.url
 
         return self.http.urlopen(
             request.method,

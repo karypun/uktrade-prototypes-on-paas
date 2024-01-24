@@ -13,10 +13,10 @@
 
 {% block content %}
 
-{% set myPageVar = data['my-var'] %}
+{% set myPageVar = data['my-url-var'] %}
 My new test page
 
-<p>URL param as session data:{{ data['my-var'] }}</p>
+<p>URL param as session data:{{ data['my-url-var'] }}</p>
 <p>URL param as var set on page:{{ myPageVar }}</p>
 <p>URL param through routes:{{ data['my-var'] }}</p>
 

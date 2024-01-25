@@ -6,6 +6,10 @@ Confirmation banner state session data: {{ data['conf-banner-state'] }} #}
 <div class="govuk-grid-row govuk-!-margin-bottom-4 govuk-!-padding-bottom-0">
     <div class="govuk-grid-column-full">
 
+    <!-- IF NO BANNER REQUIRED -->
+    {% if not confBannerState %}
+    {% endif %}
+
     <!-- BARRIER PUBLIC STATUS ADDED/UPDATED -->
     {% if confBannerState == 'can be published set'%}
         {% set html %}
@@ -153,7 +157,7 @@ Confirmation banner state session data: {{ data['conf-banner-state'] }} #}
         </h3>
         <p class="govuk-body">The reason given was: </p>
         <p class="govuk-body">{{ data['barrier-not-allowed-desc'] }}</p>
-        <p class="govuk-body">This decision will now be reviewed by the approver and updated on the <a class="govuk-notification-banner__link" href="barrier-information-public">Public view tab.</a></p>
+        <p class="govuk-body">This decision will now be reviewed by the approver and updated on the <a class="govuk-notification-banner__link" href="barrier-information-public?conf-banner-state=">Public view tab.</a></p>
         {% endset %}
 
         {{ govukNotificationBanner({

@@ -1,26 +1,44 @@
 {% set pvPublishAllowedStatus = data['barrier-public-view-status'] %}
 {# {% set pvPublishAllowedStatus = 'not allowed' %} #}
+{% set userType = 'gu' %}
 
-
+{% if userType == 'gu' %} <!-- Will be easier to handle usertypes within each action card but for now just check overall and display accordingly -->
 <!-- Check if first time and show dashed box if so -->
 <div class="information-box {% if not pvPublishAllowedStatus %}information-box__notset">{% else %}">{% endif %}
         <div class="govuk-summary-list__row">
-                <h2 class="govuk-heading-m govuk-!-margin-bottom-3">Public view status</h2>
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-3">Should this barrier be made public on GOV.UK once it has been approved?</h1>
         </div>     
         
-        <!-- IF ALLOWED -->   
-        {% if pvPublishAllowedStatus == "Can be published" %}
-            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Can be published</p>
-            <a href="edit-publishing-status" class="govuk-link--no-visited-state govuk-!-font-size-19">Edit</a>
+        <!-- IF NOT SET YET -->
+        {% if not pvPublishAllowedStatus %}
+            <a href="edit-publishing-status" class="govuk-link--no-visited-state govuk-!-font-size-19">Barrier publication status</a>
+        {% endif %}
 
         <!-- IF NOT ALLOWED -->
-        {% elseif pvPublishAllowedStatus == "Cannot be published" %}
-            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Cannot be published</p>
-            <p class="govuk-body govuk-!-margin-bottom-2"><span>Reason:</span> {{ data['barrier-not-allowed-desc'] }}</p>
+        {% if pvPublishAllowedStatus == 'Cannot be published' %}
+            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">No</p>
+            <p class="govuk-body govuk-!-margin-bottom-2"><span class="govuk-!-font-weight-bold">Reason:</span> {{ data['barrier-not-allowed-desc'] }}</p>
             <a href="edit-publishing-status" class="govuk-link--no-visited-state govuk-!-font-size-19">Edit</a>
+        {% endif %}    
 
-        <!-- IF NOTHING SET YET-->
-        {% else %}
-           <a href="edit-publishing-status" class="govuk-link--no-visited-state govuk-!-font-size-19">Set public view status</a>
-        {% endif %}
+        <!-- IF ALLOWED -->   
+        {% if pvPublishAllowedStatus == "Can be published" %}
+            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Yes</p>
+            {% if pvTitle and pvSummary %}
+            <!-- SUPPRESS EDIT -->
+            {% else %}
+            <a href="edit-publishing-status" class="govuk-link--no-visited-state govuk-!-font-size-19">Edit</a>
+            {% endif %}
+        {% endif %}    
+
+
 </div>
+{% endif %}
+
+
+<!-- GU RULES
+If not set then allow to be set
+If set and not allowed then show not allowed
+If set and allowed then allow edit unless
+- title and summary exist = assume with approver or beyond (will need a state for published and edited)
+-->

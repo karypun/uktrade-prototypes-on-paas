@@ -6,63 +6,62 @@
 {% set pvStatus = 'allowed' %}
 {% set pvTitleStatus = 'entered' %}
 {% set pvSummaryStatus = 'entered' %} #}
+{% set userType = 'gu' %}
 
-<!-- IF PV NOT ALLOWED WE SUPRESS THE COMPONENT UNLESS PUBLIC TITLE AND/OR SUMMARY ALREADY ADDED-->
-{% if pvPublishAllowedStatus == "Cannot be published" %}
-<!-- ADD LOGIC TO SHOW TITLE AND/OR SUMMARY IF ALREADY ENTERED HERE-->
+{% if userType == 'gu' %}  <!-- Will be easier to handle usertypes within each action card but for now just check overall and display accordingly -->
+    <!-- IF PV NOT ALLOWED WE SUPRESS THE COMPONENT UNLESS PUBLIC TITLE AND/OR SUMMARY ALREADY ADDED-->
+    {% if pvPublishAllowedStatus == "Cannot be published" %}
+    <!-- ADD LOGIC TO SHOW TITLE AND/OR SUMMARY IF ALREADY ENTERED HERE-->
+    {% endif %}
 
-<!-- IF PV NOT SET EITHER WAY -->
-{% elseif not pvPublishAllowedStatus %}  
-    <!-- show first time box style -->
-    <div class="information-box information-box__notset">
-            <div class="govuk-summary-list__row">
-                <h2 class="govuk-heading-m govuk-!-margin-bottom-3">Public title and summary</h2>
-            </div>     
-            <p class="govuk-body govuk-hint govuk-!-margin-bottom-2">You must set the public view status before you can add a title and summary.</p>
-    </div>
-
-
-<!-- IF PV SET TO ALLOWED -->
-{% elseif pvPublishAllowedStatus == "Can be published" %}
-    <div class="information-box">
-        <div class="govuk-summary-list__row">
-            <h2 class="govuk-heading-m govuk-!-margin-bottom-3">Public title and summary</h2>
+    <!-- IF PV NOT SET EITHER WAY -->
+    {% if not pvPublishAllowedStatus %}  
+        <!-- show first time box style -->
+        <div class="information-box information-box__notset">
+                <div class="govuk-summary-list__row">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">Public title and summary</h3>
+                </div>     
+                <p class="govuk-body govuk-hint govuk-!-margin-bottom-2">You cannot add this information until you decide if this barrier should be made public on GOV.UK.</p>
         </div>
-        {% if pvTitle %}
-            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">Public title</p>
-            <p class="govuk-body govuk-!-margin-bottom-2">{{ pvTitle }}</p>
-            <p class="govuk-body"><a href="edit-public-title" class="govuk-link--no-visited-state govuk-!-font-size-19">Edit</a></p>
-        {% else %}
-        <p class="govuk-body"><a href="edit-public-title" class="govuk-link--no-visited-state govuk-!-font-size-19">Add public title</a></p>
-        {% endif %}
-        {% if pvSummary %}
-            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-margin-top-3">Public summary</p>
-            <p class="govuk-body govuk-!-margin-bottom-2">{{ pvSummary }}</p>
-            <a href="edit-public-summary" class="govuk-link--no-visited-state govuk-!-font-size-19">Edit</a>
-        {% else %}
-        <a href="edit-public-summary" class="govuk-link--no-visited-state govuk-!-font-size-19">Add public summary</a>
-        {% endif %}
-    </div>
+    {% endif %}
+
+    <!-- IF PV SET TO ALLOWED -->
+    {% if pvPublishAllowedStatus == "Can be published" %}
+        <div class="information-box">
+            <div class="govuk-summary-list__row">
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-3">Public title and summary</h3>
+            </div>
+            {% if pvTitle %}
+                <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">Public title</p>
+                <p class="govuk-body govuk-!-margin-bottom-2">{{ pvTitle }}</p>
+                <!-- Hide edit button if at approval/publishing stage -->
+                {% if pvTitle and pvSummary %}
+                <!-- SUPPRESS EDIT -->
+                {% else %}
+                <p class="govuk-body"><a href="edit-public-title" class="govuk-link--no-visited-state govuk-!-font-size-19">Edit</a></p>
+                {% endif %}
+            {% else %}
+            <p class="govuk-body"><a href="edit-public-title" class="govuk-link--no-visited-state govuk-!-font-size-19">Public title</a></p>
+            {% endif %}
+            {% if pvSummary %}
+                <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-margin-top-3">Public summary</p>
+                <p class="govuk-body govuk-!-margin-bottom-2">{{ pvSummary }}</p>
+                <!-- Hide edit button if at approval/publishing stage -->
+                {% if pvTitle and pvSummary %}
+                <!-- SUPPRESS EDIT -->
+                {% else %}
+                <a href="edit-public-summary" class="govuk-link--no-visited-state govuk-!-font-size-19">Edit</a>
+                {% endif %}
+            {% else %}
+            <a href="edit-public-summary" class="govuk-link--no-visited-state govuk-!-font-size-19">Public summary</a>
+            {% endif %}
+        </div>
+    {% endif %}
 {% endif %}
 
-<!--
-    Will need these states covered 
-
-    PV not set so no option to add title/summary
-    PV set not allowed so do not display anything
-    PV set allowed so can add title and summary
-    PV set title and/or summary added so edit option
-    ALSO ADD PUBLISHED WITH OUTSTANDING CHANGES VIEW HERE
-    PLUS ANY OTHER VIEWS THAT COME OUT DURING WORKSHOP IN JAN
--->
-
-
-<!---
-If not allowed hide
-else
-if blank then say set allowed or not
-else
-must be set to allowed so show various add edit states
-end if
-
+<!-- GU RULES
+If allowed not set then cannot add
+If allowed set and not allowed then hide (for now - this has changed in Mural as of 24Jan)
+if allowed set but no title or summary then allow adding
+if allowed set and title and summary = assume with approver or beyond (will need a state for published and edited)
 -->

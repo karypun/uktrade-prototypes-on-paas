@@ -3,57 +3,57 @@
 <!-- Add logic to display type of barrier based on publicViewState var -->
 {% if params.publicViewState == "notset" %}
     <div class="pv-status pv-status__inprogress">
-    <h2 class="pv-status__heading govuk-!-margin-bottom-0 govuk-!-margin-top-0">Publish status not set</h2>
+    <h2 class="pv-status__heading govuk-!-margin-bottom-0 govuk-!-margin-top-0">Set a publication status</h2>
     <p class="govuk-!-margin-0 govuk-!-padding-top-2">
-    A decision on whether this barrier should be allowed to be made public is required.
+        Set a status to decide if this barrier can be published, once it has been approved.
     </p>
     </div>
 {% endif %}
 
 {% if params.publicViewState == "cannot be published" %}
     <div class="pv-status pv-status__inprogress">
-    <h2 class="pv-status__heading govuk-!-margin-bottom-0 govuk-!-margin-top-0">Cannot be Published</h2>
+    <h2 class="pv-status__heading govuk-!-margin-bottom-0 govuk-!-margin-top-0">This barrier will not be published on GOV.UK</h2>
     <p class="govuk-!-margin-0 govuk-!-padding-top-2">
-    This barrier cannot be published.
+        To make this barrier public, you will need to update the barrier publication status, add a title and summary - and then get it approved.
     </p>
     </div>
 {% endif %}
 
 {% if params.publicViewState == "title or summary not added" %}
     <div class="pv-status pv-status__inprogress">
-    <h2 class="pv-status__heading govuk-!-margin-bottom-0 govuk-!-margin-top-0">Can be Published</h2>
+    <h2 class="pv-status__heading govuk-!-margin-bottom-0 govuk-!-margin-top-0">Add a barrier title and summary</h2>
     <p class="govuk-!-margin-0 govuk-!-padding-top-2">
-    This barrier can be published but needs a title and summary
+        You cannot send this barrier for approval until you add the title and summary. This needs to done within the next 30 days. 
     </p>
     </div>
 {% endif %}
 
 {% if params.publicViewState == "awaiting approval" %}
     <div class="pv-status pv-status__inprogress">
-    <h2 class="pv-status__heading govuk-!-margin-bottom-0 govuk-!-margin-top-0">Awaiting approval</h2>
+    <h2 class="pv-status__heading govuk-!-margin-bottom-0 govuk-!-margin-top-0">This barrier is being reviewed by the approver</h2>
     <p class="govuk-!-margin-0 govuk-!-padding-top-2">
-    This barrier requires approval before it can be sent to content team.
+        Once it has been approved, the barrier will be sent to the GOV.UK team for final content checks.
+    </p>
+    <p class="govuk-!-margin-0 govuk-!-padding-top-2">
+        If this is done within the next 30 days it can be published.
     </p>
     </div>
 {% endif %}
 
 {% if params.publicViewState == "approved" %}
     <div class="pv-status pv-status__inprogress">
-    <h2 class="pv-status__heading govuk-!-margin-bottom-0 govuk-!-margin-top-0">Approved</h2>
+    <h2 class="pv-status__heading govuk-!-margin-bottom-0 govuk-!-margin-top-0">The GOV.UK team are reviewing the content</h2>
     <p class="govuk-!-margin-0 govuk-!-padding-top-2">
-    This barrier is awaiting the content team review
+        They need to do complete their checks within the next 30 days. They can then publish the barrier and update the status.
     </p>
     </div>
 {% endif %}
 
 {% if params.publicViewState == "published" %}
     <div class="pv-status pv-status__published">
-    <h2 class="pv-status__heading govuk-!-margin-bottom-0 govuk-!-margin-top-0">Published</h2>
+    <h2 class="pv-status__heading govuk-!-margin-bottom-0 govuk-!-margin-top-0">This barrier has been published</h2>
     <p class="govuk-!-margin-0 govuk-!-padding-top-2">
-        <a href="#" class="govuk-link">View this barrier on the public website.</a>
-    </p>
-    <p class="govuk-!-margin-0 govuk-!-padding-top-2">
-        Public ID: PID-B6L37G
+        You can view the barrier on GOV.UK by visiting <a class="govuk-link" href="https://www.check-international-trade-barriers.service.gov.uk/" target="_blank">Check International Trade Barriers (opens in new tab).</a>
     </p>
     </div>
 {% endif %}

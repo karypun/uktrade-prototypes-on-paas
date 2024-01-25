@@ -80,6 +80,7 @@
             <div class="govuk-grid-row">
               <!-- LEFT HAND COLUMN -->
               <div class="govuk-grid-column-one-half">
+                <h2 class="govuk-heading-m">Prepare for publication</h2>
                 {% include "/includes/publishing/pv-actions-set-public-view-status.njk" %}
                 {% include "/includes/publishing/pv-actions-set-public-title_desc.njk" %}
                 {% include "/includes/publishing/pv-actions-set-approvals.njk" %}
@@ -89,7 +90,10 @@
 
               <!-- RIGHT HAND COLUMN -->
               <div class="govuk-grid-column-one-half">
+                <h2 class="govuk-heading-m">Barrier publication status</h2>
                 {% include "/includes/publishing/pv-status-card.njk" %}
+                <h2 class="govuk-heading-m">Internal notes and updates</h2>
+                <p class="govuk-hint">These are not shown to the public.</p>
                 {% include "/includes/publishing/pv-notes-section.njk" %}
               </div>
 
@@ -98,14 +102,21 @@
         </div>
       </div>
 
+      pvPublishAllowedStatus: {{ data['barrier-public-view-status'] }} |
+      Publishing not allowed reason: {{ data['barrier-not-allowed-desc'] }} |
+      pvTitle: {{ data['public-title'] }} |
+      pvSummary: {{ data['public-summary'] }} |
+      pvApprovalStatus: {{ data['approval-status'] }} |
+      pvPublishStatus: {{ data['publish-status'] }} |
 
-    Publishing allowed status: {{ data['barrier-public-view-status'] }} |
+    {#}
+    Public view status: {{ data['barrier-public-view-status'] }} |
     Publishing not allowed reason: {{ data['barrier-not-allowed-desc'] }} |
     Public title: {{ data['public-title'] }} |
     Public summary: {{ data['public-summary'] }} |
     Public approval status: {{ data['approval-status'] }} |
     Public published status: {{ data['publish-status'] }} |
     Public view state: {{ publicViewState }}  |
-    Conf banner state: {{ data['conf-banner-state'] }}
+    Conf banner state: {{ data['conf-banner-state'] }} -- {#}
 
 {% endblock %}

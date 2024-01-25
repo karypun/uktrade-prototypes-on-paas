@@ -10,58 +10,98 @@
 {% set pvSummaryStatus = 'entered' %}
 {% set pvApprovalStatus = 'approved' %}
 {% set pvPublishStatus = 'not published' %} #}
+{% set userType = 'gu' %}
 <!-- NEED TO COME BACK AND SET AN OVERALL PUBLIC VIEW STATUS VAR -->
 
-<!-- IF PV NOT ALLOWED WE SUPRESS THE COMPONENT -->
-{% if pvPublishAllowedStatus == "Cannot be published" %}
+{% if userType == 'gu' %}  <!-- Will be easier to handle usertypes within each action card but for now just check overall and display accordingly -->
 
-<!-- IF PV NOT SET EITHER WAY -->
-{% elseif not pvPublishAllowedStatus or pvPublishAllowedStatus and not pvTitle or not pvSummary or not pvApprovalStatus %}
-    <!-- show first time box style -->
-    <div class="information-box information-box__notset">
-        <div class="govuk-summary-list__row">
-            <h2 class="govuk-heading-m govuk-!-margin-bottom-3">Publishing</h2>
-        </div>     
-        <p class="govuk-body govuk-hint govuk-!-margin-bottom-2">You must set the public view status, add a title and summary and approve the barrier before it can be published.</p>
-    </div>
+    <!-- NOTHING SET YET -->
+    {% if not pvPublishAllowedStatus %}
+        <!-- show first time box style -->
+        <div class="information-box information-box__notset">
+            <div class="govuk-summary-list__row">
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-3">Publishing</h3>
+            </div>     
+            <p class="govuk-body govuk-hint govuk-!-margin-bottom-2">The GOV.UK team will publish the barrier if all the information is complete and it has been approved.</p>
+        </div>
 
-    <!-- IF PV SET AND TITLE AND SUMMARY ADDED AND APPROVED --> 
-    {% elseif pvPublishAllowedStatus == "Can be published" and pvTitle and pvSummary and pvApprovalStatus == 'approved' %}
+    <!-- CANNOT BE PUBLISHED -->
+    {% elseif pvPublishAllowedStatus == "Cannot be published" %}
+
+    <!-- CAN BE PUBLISHED, NEEDS TITLE AND SUMMARY -->  
+    {% elseif pvPublishAllowedStatus == 'Can be published' and not pvTitle or not pvSummary %}
+        <!-- show first time box style -->
+        <div class="information-box information-box__notset">
+            <div class="govuk-summary-list__row">
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-3">Publishing</h3>
+            </div>     
+            <p class="govuk-body govuk-hint govuk-!-margin-bottom-2">The GOV.UK team will publish the barrier if all the information is complete and it has been approved.</p>
+        </div>
+
+    <!-- CAN BE PUBLISHED, HAS TITLE AND SUMMARY, NEEDS TO BE APPROVED -->  
+    {% elseif pvPublishAllowedStatus == 'Can be published' and  pvTitle and pvSummary and not pvApprovalStatus %}
+        <!-- show first time box style -->
+        <div class="information-box information-box__notset">
+            <div class="govuk-summary-list__row">
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-3">Publishing</h3>
+            </div>     
+            <p class="govuk-body govuk-hint govuk-!-margin-bottom-2">The GOV.UK team will carry out final content checks and publish the barrier if all the information is complete and it has been approved.</p>
+        </div>
+
+    <!-- CAN BE PUBLISHED, HAS TITLE AND SUMMARY, IS APPROVED AND NEEDS TO BE PUBLISHED -->
+    {% elseif pvPublishAllowedStatus == 'Can be published' and pvTitle and pvSummary and pvApprovalStatus == 'approved' and not pvPublishStatus %}
+        <div class="information-box information-box__notset">
+            <div class="govuk-summary-list__row">
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-3">Publishing</h3>
+            </div>     
+            <p class="govuk-body govuk-hint govuk-!-margin-bottom-2">The GOV.UK team are reviewing the content for this approved barrier.</p>
+            <p class="govuk-body govuk-hint govuk-!-margin-bottom-2">They will update the status to 'published' once it is live. You will then be able to view the barrier by visiting <a class="govuk-link" href="https://www.check-international-trade-barriers.service.gov.uk/" target="_blank">check international trade barriers (opens in new tab).</a></p>
+        </div>
+
+    <!-- CAN BE PUBLISHED, HAS TITLE AND SUMMARY, IS APPROVED AND IS PUBLISHED -->    
+    {% elseif pvPublishAllowedStatus == "Can be published" and pvTitle and pvSummary and pvApprovalStatus == 'approved' and pvPublishStatus == 'published' %}
         <div class="information-box">
             <div class="govuk-summary-list__row">
-                <h2 class="govuk-heading-m govuk-!-margin-bottom-3">Publishing</h2>
-            </div> 
-        {% if not pvPublishStatus %}
-            {{ govukButton({
-                text: "Publish",
-                classes: "govuk-!-margin-bottom-1"
-            }) }}
-
-            {{ govukButton({
-                text: "Mark as rejected",
-                classes: "govuk-button--secondary govuk-!-margin-bottom-1"                
-            }) }}
-        {% else %}
-            {{ govukButton({
-                text: "Unpublish",
-                classes: "govuk-button--secondary govuk-!-margin-bottom-1"                
-            }) }}
-        {% endif %}
-</div>
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-3">Publishing</h3>
+            </div>     
+            <p class="govuk-body govuk-hint govuk-!-margin-bottom-2">This barrier has been published on GOV.UK. To view this barrier visit <a class="govuk-link" href="https://www.check-international-trade-barriers.service.gov.uk/" target="_blank">check international trade barriers (opens in new tab).</a></p>
+        </div>
+    {% endif %}
 
 {% endif %}
 
 
-
-<!---
-If not allowed hide
-else
-if blank then say set allowed or not, add a title and summary and approved
-else
-must be set to allowed so show various states which are:
-    Not published - with publish option
-    Published
-
-end if
-
+<!-- GU RULES
+If allowed set and not allowed then hide
+If allowed not set then cannot approve / if allowed is set but no title or summary then cannot approve
+if allowed set and title and summary and not approved = assume with approver or beyond (will need a state for published and edited)
+if allowed set and title and summary and approved = assume with content team
+if allowed set and title and summary and approved and published = published
 -->
+
+
+
+
+        <!-- IF PV SET AND TITLE AND SUMMARY ADDED AND APPROVED AND LOGGED IN AS PUBLISHER --> 
+        {# {% elseif pvPublishAllowedStatus == "Can be published" and pvTitle and pvSummary and pvApprovalStatus == 'approved' <!-- and userType is publisher %}
+            <div class="information-box">
+                <div class="govuk-summary-list__row">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">Publishing</h3>
+                </div> 
+            {% if not pvPublishStatus %}
+                {{ govukButton({
+                    text: "Publish",
+                    classes: "govuk-!-margin-bottom-1"
+                }) }}
+
+                {{ govukButton({
+                    text: "Mark as rejected",
+                    classes: "govuk-button--secondary govuk-!-margin-bottom-1"                
+                }) }}
+            {% else %}
+                {{ govukButton({
+                    text: "Unpublish",
+                    classes: "govuk-button--secondary govuk-!-margin-bottom-1"                
+                }) }}
+            {% endif %}
+            </div> #}

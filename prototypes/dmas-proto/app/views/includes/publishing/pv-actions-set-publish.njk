@@ -3,10 +3,10 @@
 {% set pvSummary = data['public-summary'] %}
 {% set pvApprovalStatus = data['approval-status'] %}
 {% set pvPublishStatus = data['publish-status'] %}
-{% set userType = 'gu' %}
+{% if data['user-role-type'] %} {% set userType = data['user-role-type'] %} {% else %} {% set userType = 'gu' %} {% endif %}
 
-{#}
 
+{#
 {% set pvStatus = 'allowed' %}
 {% set pvTitleStatus = 'entered' %}
 {% set pvSummaryStatus = 'entered' %}
@@ -73,6 +73,11 @@
 {% endif %}
 
 {% if userType == 'ap' %}
+Approver versions here
+{% endif %}
+
+{% if userType == 'cd' %}
+
 {% endif %}
 
 <!-- GU RULES

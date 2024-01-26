@@ -686,12 +686,15 @@ router.post('/mve-submission', function(request, response) {
 
     if (barrierState == "Can be published" && publicTitle && publicSummary){
         request.session.data['conf-banner-state'] = "mve-can-be-published-and-title-and-summary"
+        request.session.data['notes-state'] = "mve-can-be-published-and-title-and-summary"
         response.redirect("current/publishing-v3/mve-bolt-on/option-4/barrier-information")
     } else if (barrierState == "Cannot be published") {
         request.session.data['conf-banner-state'] = "mve-cannot-be-published"
+        request.session.data['notes-state'] = "mve-cannot-be-published"
         response.redirect("current/publishing-v3/mve-bolt-on/option-4/barrier-information")
     } else {
         request.session.data['conf-banner-state'] = "mve-can-be-published-no-title-and-summary"
+        request.session.data['notes-state'] = "mve-can-be-published-no-title-and-summary"
         response.redirect("current/publishing-v3/mve-bolt-on/option-4/barrier-information")
     }
 })

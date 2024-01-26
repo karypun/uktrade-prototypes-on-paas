@@ -18,12 +18,12 @@
             <li class="datahub-header__navigation__item">
                 {% if userType == 'gu' %}
                     <span class="datahub-header__navigation__item__logged">Logged in as a <span class="govuk-!-font-weight-bold">General user</span></span>
-                {% endif %}
-                {% if userType == 'ap' %}
+                {% elseif userType == 'ap' %}
                     <span class="datahub-header__navigation__item__logged">Logged in as an <span class="govuk-!-font-weight-bold">Approver</span></span>
-                {% endif %}
-                {% if userType == 'cd' %}
+                {% elseif userType == 'cd' %}
                     <span class="datahub-header__navigation__item__logged">Logged in as a <span class="govuk-!-font-weight-bold">Publisher</span></span>
+                {% else %}
+                <span class="datahub-header__navigation__item__logged">Logged in as a <span class="govuk-!-font-weight-bold">General user</span></span>
                 {% endif %}
             </li>
         </ul>

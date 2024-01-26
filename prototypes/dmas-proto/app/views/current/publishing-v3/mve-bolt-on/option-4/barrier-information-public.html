@@ -1,8 +1,9 @@
 {% extends "layouts/main.html" %}
 
 {# {% set bodyClasses = 'dmas-align-override dmas-width' %} #}
-{% set userType = 'gu' %}
-{% set barrierInformation = data.sampleBarrierData %}
+
+<!-- Use some sample data from json -->
+set barrierInformation = data.sampleBarrierData 
 
 {#
 {% if publicViewState is not null %}
@@ -24,8 +25,13 @@
 {% endblock %}
 
 
-
 {% block content %}
+{#}
+{% if data['user-role-type'] %}
+{% set userType = data['user-role-type'] %}
+{% else %}
+{% set userType = 'gu' %}
+{% endif %} {#}
 
 <!-- TAGS SECTION -->
 

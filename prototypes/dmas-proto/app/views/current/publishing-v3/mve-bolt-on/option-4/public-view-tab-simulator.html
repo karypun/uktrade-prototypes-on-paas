@@ -15,11 +15,10 @@
 {% if data['user-role-type'] %} <h1>Logged in as '{{ data['user-role-type'] }}' ({{ data['user-role-type-friendly'] }})</h1>{% endif %}
 <h2>Publish states</h2>
 
-
 <p class="govuk-body">Use these links to simulate the various states the public view tab will a</p>
 <ul class="govuk-list">
     <li>
-      <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information-public?barrier-public-view-status=&public-title=&public-summary=&publicViewState=&conf-banner-state=">Existing barrier - no publishing started</a>
+      <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information-public?barrier-public-view-status=&public-title=&public-summary=&publicViewState=&conf-banner-state=&user-role-type=data['user-role-type']">Existing barrier - no publishing started</a>
     </li>
     <li>
         <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information-public?barrier-public-view-status=Cannot be published&barrier-not-allowed-desc=test reason&public-title=&public-summary=&publicViewState=&conf-banner-state=mve-cannot-be-published">MVE journey barrier created - Publishing not allowed </a>

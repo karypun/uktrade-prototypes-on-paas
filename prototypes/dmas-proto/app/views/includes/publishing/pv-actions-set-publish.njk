@@ -3,14 +3,16 @@
 {% set pvSummary = data['public-summary'] %}
 {% set pvApprovalStatus = data['approval-status'] %}
 {% set pvPublishStatus = data['publish-status'] %}
+{% set userType = 'gu' %}
 
 {#}
+
 {% set pvStatus = 'allowed' %}
 {% set pvTitleStatus = 'entered' %}
 {% set pvSummaryStatus = 'entered' %}
 {% set pvApprovalStatus = 'approved' %}
 {% set pvPublishStatus = 'not published' %} #}
-{% set userType = 'gu' %}
+
 <!-- NEED TO COME BACK AND SET AN OVERALL PUBLIC VIEW STATUS VAR -->
 
 {% if userType == 'gu' %}  <!-- Will be easier to handle usertypes within each action card but for now just check overall and display accordingly -->
@@ -70,6 +72,8 @@
 
 {% endif %}
 
+{% if userType == 'ap' %}
+{% endif %}
 
 <!-- GU RULES
 If allowed set and not allowed then hide

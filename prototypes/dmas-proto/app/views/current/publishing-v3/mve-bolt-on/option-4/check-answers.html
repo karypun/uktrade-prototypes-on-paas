@@ -174,7 +174,7 @@
                 Name of companies affected by the barrier
               </dt>
               <dd class="govuk-summary-list__value">
-                TEST LIMITED
+                Aerodynamics Ltd
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="#">
@@ -257,11 +257,11 @@
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
-                    Publishing
+                    Publish on GOV.UK
                   </dt>
                   <dd class="govuk-summary-list__value">
                     <!-- SHOW THE PUBLIC VIEW STATUS -->
-                    {% if data['barrier-public-view-status'] %}{{ data['barrier-public-view-status'] }} {% else %} Can be published {% endif %}
+                    {% if data['barrier-public-view-status'] == 'Cannot be published' %} No, it cannot be published {% else %} Yes, it can be published once approved {% endif %}
                   </dd>
                   <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="section-8">
@@ -271,13 +271,13 @@
                 </div>
             <!-- IF ALLOWED TO BE PUBLISHED -->
             {% if data['barrier-public-view-status'] == 'Can be published' %}                
-                {% if data['complete-title-summary'] %}
+                {% if data['complete-title-summary'] == 'Yes'%}
                   <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
                       Public title
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      {% if data['public-title'] %}{{ data['public-title'] }} {% else %}  {% endif %}
+                      {{ data['public-title'] }}
                     </dd>
                     <dd class="govuk-summary-list__actions">
                       <a class="govuk-link" href="section-10">
@@ -290,7 +290,7 @@
                       Public summary
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      {% if data['public-summary'] %}{{ data['public-summary'] }} {% else %}  {% endif %}
+                      {{ data['public-summary'] }}
                     </dd>
                     <dd class="govuk-summary-list__actions">
                       <a class="govuk-link" href="section-11">
@@ -303,7 +303,7 @@
               {% elseif data['barrier-public-view-status'] == 'Cannot be published' %}
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                      Reason
+                      Why the barrier should not be published
                     </dt>
                     <dd class="govuk-summary-list__value">
                       {% if data['barrier-not-allowed-desc'] %}{{ data['barrier-not-allowed-desc'] }} {% else %}  {% endif %}

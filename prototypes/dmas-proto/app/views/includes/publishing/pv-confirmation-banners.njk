@@ -69,7 +69,7 @@ Confirmation banner state session data: {{ data['conf-banner-state'] }} #}
         <h3 class="govuk-notification-banner__heading">
             This barrier has been approved and it is now with the GOV.UK team
         </h3>
-            <p class="govuk-body">They need to do complete their content checks within the next 30 days. They can then publish the barrier.</p>
+            <p class="govuk-body">They need to complete their content checks within the next 30 days. They can then publish the barrier.</p>
             <p class="govuk-body">This will be updated in the barrier publication status on the <a class="govuk-notification-banner__link" href="barrier-information-public?conf-banner-state=">public view tab.</a></p>
         {% endset %}
 
@@ -102,7 +102,7 @@ Confirmation banner state session data: {{ data['conf-banner-state'] }} #}
         <h3 class="govuk-notification-banner__heading">
             Barrier published
         </h3>
-            <p class="govuk-body">You successfully published this barrier on <a class="govuk-notification-banner__link" href="#">check an international trade barrier.</a></p>
+            <p class="govuk-body">You successfully published this barrier on <a class="govuk-notification-banner__link" href="https://www.check-international-trade-barriers.service.gov.uk/" target="_blank">check an international trade barrier.</a></p>
         {% endset %}
 
         {{ govukNotificationBanner({

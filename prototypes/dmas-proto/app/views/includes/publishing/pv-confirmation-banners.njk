@@ -18,6 +18,7 @@ Confirmation banner state session data: {{ data['conf-banner-state'] }} #}
         </h3>
         {% if pvPublishAllowedStatus == 'Can be published' %}
             <p class="govuk-body">You successfully set the public view status to <strong>can be published</strong>.</p>
+            <p class="govuk-body">This decision will now be reviewed by the approver and updated on the <a class="govuk-notification-banner__link" href="barrier-information-public?conf-banner-state=">public view tab.</a></p>
         {% else %}
             <p class="govuk-body">You successfully set the public view status to <strong>cannot be published</strong>.</p>
         {% endif %}
@@ -66,9 +67,10 @@ Confirmation banner state session data: {{ data['conf-banner-state'] }} #}
     {% if confBannerState == 'approval set'%}
         {% set html %}
         <h3 class="govuk-notification-banner__heading">
-            Barrier approved
+            This barrier has been approved and it is now with the GOV.UK team
         </h3>
-            <p class="govuk-body">You successfully approved the barrier. The content team will now review.</p>
+            <p class="govuk-body">They need to do complete their content checks within the next 30 days. They can then publish the barrier.</p>
+            <p class="govuk-body">This will be updated in the barrier publication status on the <a class="govuk-notification-banner__link" href="barrier-information-public?conf-banner-state=">public view tab.</a></p>
         {% endset %}
 
         {{ govukNotificationBanner({
@@ -100,7 +102,7 @@ Confirmation banner state session data: {{ data['conf-banner-state'] }} #}
         <h3 class="govuk-notification-banner__heading">
             Barrier published
         </h3>
-            <p class="govuk-body">You successfully published the barrier onto <a class="govuk-notification-banner__link" href="#">Check an International Trade Barrier.</a></p>
+            <p class="govuk-body">You successfully published this barrier on <a class="govuk-notification-banner__link" href="#">check an international trade barrier.</a></p>
         {% endset %}
 
         {{ govukNotificationBanner({
@@ -114,9 +116,10 @@ Confirmation banner state session data: {{ data['conf-banner-state'] }} #}
     {% if confBannerState == 'mve-can-be-published-and-title-and-summary'%}
         {% set html %}
         <h3 class="govuk-notification-banner__heading">
-            Barrier successfully created
+            This barrier has been successfully created and is with the approver
         </h3>
-        <p class="govuk-body">Within the next 30 days, the approver in your region needs to confirm they are happy for the barrier to be published.</p>
+        <p class="govuk-body">Once it has been approved, the barrier will be sent to the GOV.UK team for final content checks. If this is done within the next 30 days, it can be published.</p>
+        <p class="govuk-body">This will be updated on the barrier publication status on the <a class="govuk-notification-banner__link" href="barrier-information-public?conf-banner-state=">public view tab.</a></p>
         {% endset %}
 
         {{ govukNotificationBanner({
@@ -133,10 +136,11 @@ Confirmation banner state session data: {{ data['conf-banner-state'] }} #}
     {% if confBannerState == 'mve-can-be-published-no-title-and-summary'%}
         {% set html %}
         <h3 class="govuk-notification-banner__heading">
-            You've successfully created the barrier but need to add a public title and summary
+            You’ve set the publication status but need to add more information
         </h3>
-        <p class="govuk-body">You cannot send this barrier for approval until you add the title and summary. This needs to be done within the next 30 days. </p>
-
+        <p class="govuk-body">The publication status is set to <span class="govuk-!-font-weight-bold">can be published</span></p>
+        <p class="govuk-body">You now need to add the public title and summary within the next 30 days, before this barrier can be approved.</p>
+        <p class="govuk-body">For more details see the barrier publication status on the <a class="govuk-notification-banner__link" href="barrier-information-public?conf-banner-state=">public view tab.</a></p>
         {% endset %}
 
         {{ govukNotificationBanner({
@@ -157,7 +161,7 @@ Confirmation banner state session data: {{ data['conf-banner-state'] }} #}
         </h3>
         <p class="govuk-body">The reason given was: </p>
         <p class="govuk-body">{{ data['barrier-not-allowed-desc'] }}</p>
-        <p class="govuk-body">This decision will now be reviewed by the approver and updated on the <a class="govuk-notification-banner__link" href="barrier-information-public?conf-banner-state=">Public view tab.</a></p>
+        <p class="govuk-body">This decision will now be reviewed by the approver and updated on the <a class="govuk-notification-banner__link" href="barrier-information-public?conf-banner-state=">public view tab.</a></p>
         {% endset %}
 
         {{ govukNotificationBanner({

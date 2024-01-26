@@ -596,6 +596,39 @@ function generate_list_of_barriers(amount) {
 }
 
 // Add your routes here
+
+// ---------------
+// CONSOLE LOGGING
+// ---------------
+
+// Logging session data viewable in console log
+  
+router.use((request, response, next) => {    
+    const log = {  
+      method: request.method,  
+      url: request.originalUrl,  
+      data: request.session.data  
+    }  
+    console.log(JSON.stringify(log, null, 2))  
+   
+  next()  
+}) 
+
+// See where coming from and currently on
+router.use('/', (request, response, next) => {  
+    response.locals.currentURL = request.originalUrl; 
+    response.locals.prevURL = request.get('Referrer');
+  
+  console.log('current screen: ' + response.locals.currentURL);
+  console.log('previous screen: ' + response.locals.prevURL );
+  
+    next();  
+  });
+
+// ------------------------------------------
+// MVE POSSIBLE ENHANCEMENTS (NOT PUBLISHING)
+// ------------------------------------------
+
 // Section 7 concept routing based on HC codes known or not
 router.post('/hs-codes-known-answer', function(request, response) {
 
@@ -741,3 +774,32 @@ router.post('/csat-submission', function(request, response) {
         response.redirect("current/publishing-v3/mve-bolt-on/option-4/barrier-information?conf-banner-state=")
 
 })
+
+// Set user type
+router.post('/user-type-route', function(request, response) {
+
+    // This might be overkill but creating route to handle user type and routing (to previous page etc.)
+    // Build this out as prototype expands to support logged in states etc.
+    // Get prev page and user type selected from form    
+    // var prevPage = request.headers.referer
+    var userType = request.session.data['user-role-type']
+
+    //build out URL
+    // var routingUrl = prevPage + '?' + "user-role-type=" + userType
+
+    //Send user back
+    //response.redirect(routingUrl)
+
+    if (userType == "gu"){
+        request.session.data['user-role-type-friendly'] = "General user"
+    } else if (userType == "ap"){
+        request.session.data['user-role-type-friendly'] = "Approver"
+    } else {
+        request.session.data['user-role-type-friendly'] = "Publisher"
+    }
+    response.redirect("current/publishing-v3/mve-bolt-on/option-4/public-view-tab-simulator")
+
+})
+
+
+

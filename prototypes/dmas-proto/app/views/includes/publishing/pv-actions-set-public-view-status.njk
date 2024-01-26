@@ -16,14 +16,14 @@
 
         <!-- IF NOT ALLOWED -->
         {% if pvPublishAllowedStatus == 'Cannot be published' %}
-            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">No</p>
+            <p class="govuk-body govuk-!-margin-bottom-2">No</p>
             <p class="govuk-body govuk-!-margin-bottom-2"><span class="govuk-!-font-weight-bold">Reason:</span> {{ data['barrier-not-allowed-desc'] }}</p>
             <a href="edit-publishing-status" class="govuk-link--no-visited-state govuk-!-font-size-19">Edit</a>
         {% endif %}    
 
         <!-- IF ALLOWED -->   
         {% if pvPublishAllowedStatus == "Can be published" %}
-            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Yes</p>
+            <p class="govuk-body govuk-!-margin-bottom-2">Yes</p>
             {% if pvTitle and pvSummary %}
             <!-- SUPPRESS EDIT -->
             {% else %}

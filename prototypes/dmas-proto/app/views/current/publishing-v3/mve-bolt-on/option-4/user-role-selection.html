@@ -1,0 +1,61 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Page name – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% set userType = 'gu' %} <!-- can replace this eventually -->
+
+{% block header %}
+<!-- MASTHEAD SECTION -->
+    {% include "/includes/dmasheader.njk" %}
+    <div class="datahub-header__navigation-container">
+      {% include "/includes/datahubnavbar.njk" %}
+      {% include "/includes/dmasnavbar-withrole.njk" %}
+    </div>
+{% endblock %}
+
+{% block content %}
+<form class="form" action="/user-type-route" method="post">
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "user-role-type",
+  fieldset: {
+    legend: {
+      text: "Select a user type",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "gu",
+      text: "General user"
+    },
+    {
+      value: "ap",
+      text: "Approver"
+    },
+    {
+      value: "cd",
+      text: "Content (publishing team)"
+    }
+  ]
+}) }}
+
+{{ govukButton({
+    text: "Confirm"
+  }) }}
+
+</form>
+
+{% endblock %}

@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block content %}
-
+{% if data['user-role-type'] %} <h1>Logged in as '{{ data['user-role-type'] }}' ({{ data['user-role-type-friendly'] }})</h1>{% endif %}
 <h2>Publish states</h2>
 
 

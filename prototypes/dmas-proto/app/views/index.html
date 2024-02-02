@@ -3,7 +3,7 @@
 {% set pageName="Home" %}
 
 {% block content %}
-
+<!-- COMPLETELY REDO THIS PAGE - TOTAL MESS AND MAKES NO SENSE - SHOULD BE BY SPRINTS, NOT JIRA TICKETS -->
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">{{ serviceName }}
@@ -33,7 +33,6 @@
               <span class="app-task-list__section-number">Current design work: </span> &nbsp;
               Market Access Utilisation
             </h2>
-            
             <ul class="app-task-list__items govuk-!-margin-bottom-5">
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">TSS-1368&nbsp;&nbsp;<span class="govuk-body govuk-!-font-size-14">(<a href="https://uktrade.atlassian.net/browse/TSS-1368?atlOrigin=eyJpIjoiZjNiMzAzMGU3MTRkNDMzZTk5M2FmYWRkNDg3MGM2ZTQiLCJwIjoiaiJ9" target="_blank">open in JIRA</a>)</span></span><br>
@@ -42,7 +41,7 @@
                     MVE Bolt-on
                   </a>
                 </span>
-                <span class="app-task-list__tag">In design</span><br>
+                <span class="app-task-list__tag">Complete</span><br>
               </li>
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">TSS-1130&nbsp;&nbsp;<span class="govuk-body govuk-!-font-size-14">(<a href="https://uktrade.atlassian.net/browse/TSS-1130?atlOrigin=eyJpIjoiZTFjNjViMDcwYjEwNDZiNTkyZDM1MDAwY2ExMDVlOTEiLCJwIjoiaiJ9" target="_blank">open in JIRA</a>)</span>&nbsp;/&nbsp;TSS-1399&nbsp;&nbsp;<span class="govuk-body govuk-!-font-size-14">(<a href="https://uktrade.atlassian.net/browse/TSS-1399?atlOrigin=eyJpIjoiNWUzMTJlM2Y4ODYwNDFkNTljNWY0OWM0MTVjMTVlYmUiLCJwIjoiaiJ9" target="_blank">open in JIRA</a>)</span></span><br>
@@ -60,7 +59,9 @@
               Market Access Utilisation
             </h2>
             <ul class="app-task-list__items">
+              <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Version 3</h3>
               <li class="app-task-list__item">
+                <h4 class="govuk-heading-s govuk-!-margin-bottom-0">MVE</h4>
                 <span class="app-task-list__task-name">TSS-1368&nbsp;&nbsp;<span class="govuk-body govuk-!-font-size-14">(<a href="https://uktrade.atlassian.net/browse/TSS-1368?atlOrigin=eyJpIjoiZjNiMzAzMGU3MTRkNDMzZTk5M2FmYWRkNDg3MGM2ZTQiLCJwIjoiaiJ9" target="_blank">open in JIRA</a>)</span></span><br>
                 <span class="app-task-list__task-name">
                   <a href="current/publishing-v3/mve-bolt-on/choice" class="govuk-link--no-visited-state">
@@ -70,15 +71,33 @@
                 <span class="app-task-list__tag">In design</span><br>
               </li>
               <li class="app-task-list__item">
-                <span class="app-task-list__task-name">TSS-1130&nbsp;&nbsp;<span class="govuk-body govuk-!-font-size-14">(<a href="https://uktrade.atlassian.net/browse/TSS-1130?atlOrigin=eyJpIjoiZTFjNjViMDcwYjEwNDZiNTkyZDM1MDAwY2ExMDVlOTEiLCJwIjoiaiJ9" target="_blank">open in JIRA</a>)</span>&nbsp;/&nbsp;TSS-1399&nbsp;&nbsp;<span class="govuk-body govuk-!-font-size-14">(<a href="https://uktrade.atlassian.net/browse/TSS-1399?atlOrigin=eyJpIjoiNWUzMTJlM2Y4ODYwNDFkNTljNWY0OWM0MTVjMTVlYmUiLCJwIjoiaiJ9" target="_blank">open in JIRA</a>)</span></span><br>
+                <h4 class="govuk-heading-s govuk-!-margin-bottom-2">Existing barrier happy path (Barrier publication status to published)</h4>
+                <span class="app-task-list__task-name">TSS-1373&nbsp;&nbsp;<span class="govuk-body govuk-!-font-size-14">(<a href="https://uktrade.atlassian.net/browse/TSS-1373?atlOrigin=eyJpIjoiY2U1NDljMzg2YzE0NGE4ZDg4Y2I5MDRiZjRjZDcwY2YiLCJwIjoiaiJ9" target="_blank">open in JIRA</a>)</span>&nbsp;/&nbsp;TSS-1387&nbsp;&nbsp;<span class="govuk-body govuk-!-font-size-14">(<a href="https://uktrade.atlassian.net/browse/TSS-1387?atlOrigin=eyJpIjoiMGU4MzQ1MzI5NjE0NDJjZmIyNWU3MGJhOTQxODAzYzQiLCJwIjoiaiJ9" target="_blank">open in JIRA</a>)</span>&nbsp;/&nbsp;TSS-1374&nbsp;&nbsp;<span class="govuk-body govuk-!-font-size-14">(<a href="https://uktrade.atlassian.net/browse/TSS-1374?atlOrigin=eyJpIjoiYzlkMjY0Y2QwMDMyNGUzMThiZTc3Y2FkOWFjMTM0MzciLCJwIjoiaiJ9" target="_blank">open in JIRA</a>)</span></span><br>
                 <span class="app-task-list__task-name">
-                  <a href="current/publishing-v3/mve-bolt-on/option-4/barrier-information" class="govuk-link--no-visited-state">
-                    Existing barriers journey
+                  <a href="current/publishing-v3/mve-bolt-on/option-4/barrier-information-public?user-role-type=gu" class="govuk-link--no-visited-state">
+                    Happy path: General user
+                  </a><br>
+                  <a href="current/publishing-v3/mve-bolt-on/option-4/barrier-information-public?user-role-type=ap" class="govuk-link--no-visited-state">
+                    Happy path: Approver
+                  </a><br>
+                  <a href="current/publishing-v3/mve-bolt-on/option-4/barrier-information-public?user-role-type=cd" class="govuk-link--no-visited-state">
+                    Happy path: Publisher
                   </a>
                 </span>
                 <span class="app-task-list__tag">In design</span><br>
               </li>
               <li class="app-task-list__item">
+                <h4 class="govuk-heading-s govuk-!-margin-bottom-0">Existing barrier happy path (Barrier publication status upto approvals)</h4>
+                <span class="app-task-list__task-name">TSS-1130&nbsp;&nbsp;<span class="govuk-body govuk-!-font-size-14">(<a href="https://uktrade.atlassian.net/browse/TSS-1130?atlOrigin=eyJpIjoiZTFjNjViMDcwYjEwNDZiNTkyZDM1MDAwY2ExMDVlOTEiLCJwIjoiaiJ9" target="_blank">open in JIRA</a>)</span>&nbsp;/&nbsp;TSS-1399&nbsp;&nbsp;<span class="govuk-body govuk-!-font-size-14">(<a href="https://uktrade.atlassian.net/browse/TSS-1399?atlOrigin=eyJpIjoiNWUzMTJlM2Y4ODYwNDFkNTljNWY0OWM0MTVjMTVlYmUiLCJwIjoiaiJ9" target="_blank">open in JIRA</a>)</span></span><br>
+                <span class="app-task-list__task-name">
+                  <a href="current/publishing-v3/mve-bolt-on/option-4/barrier-information-public" class="govuk-link--no-visited-state">
+                    Happy path - existing barriers journey - General user
+                  </a>
+                </span>
+                <span class="app-task-list__tag">In design</span><br>
+              </li>
+              <li class="app-task-list__item">
+                <h4 class="govuk-heading-s govuk-!-margin-bottom-2">For testing public view states</h4>
                 <span class="app-task-list__task-name">
                   <a href="current/publishing-v3/mve-bolt-on/option-4/user-role-selection" class="govuk-link--no-visited-state">
                     Public view tab simulator
@@ -86,6 +105,10 @@
                 </span>
                 <span class="app-task-list__tag">In design</span><br>
               </li>
+            </ul>
+            <ul class="app-task-list__items">
+              <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Version 2</h3>
+              <h4 class="govuk-heading-s govuk-!-margin-top-2 govuk-!-margin-bottom-2">Existing barrier happy path (Barrier publication status to published)</h4>
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">TSS-870&nbsp;&nbsp;<span class="govuk-body govuk-!-font-size-14">(<a href="https://uktrade.atlassian.net/browse/TSS-870?atlOrigin=eyJpIjoiOGZhNTgzYWE0ZDZhNGEyODkzOGU1MjQ2NTIwN2E2MDkiLCJwIjoiaiJ9" target="_blank">open in JIRA</a>)</span></span><br>
                 <span class="app-task-list__task-name">

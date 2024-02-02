@@ -1,4 +1,5 @@
-    <nav class="datahub-header__navigation-wrapper datahub-header__navigation-wrapper--sub" aria-labelledby="sub-navigation">
+{% if data['user-role-type'] %} {% set userType = data['user-role-type'] %} {% else %} {% set userType = 'gu' %} {% endif %}
+<nav class="datahub-header__navigation-wrapper datahub-header__navigation-wrapper--sub" aria-labelledby="sub-navigation">
         <ul id="sub-navigation" class="datahub-header__navigation" aria-label="Second Level Navigation">
             <li class="datahub-header__navigation__item">
                 <a class="datahub-header__navigation__item__link datahub-header__navigation__item__link--active" href="#">Dashboard</a>

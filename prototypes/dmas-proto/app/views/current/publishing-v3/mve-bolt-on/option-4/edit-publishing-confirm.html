@@ -1,0 +1,54 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Public title – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set pvPublishStatus = data['publish-status'] %}
+<!-- read in default approvers -->
+{% set defaultapproversList = data.defaultApprovers %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+        Confirm publishing
+    </h1>
+    {% if pvPublishStatus == 'published' %}
+    <p class="govuk-body govuk-!-margin-bottom-6">By clicking Confirm publish, you are confirming that you want this barrier to be made public and appear on <a class="govuk-link" href="https://www.check-international-trade-barriers.service.gov.uk/" target="_blank">check international trade barriers (opens in new tab)</a>.</p>
+    <form class="form" action="barrier-information-public?publish-status=published" method="post">
+        <input type="hidden" id="conf-banner-state" name="conf-banner-state" value="published set">
+        {{ govukButton({
+        text: "Confirm publish"
+        }) }}
+        <a href="barrier-information-public?publish-status=&conf-banner-state=" class="govuk-link form-cancel">Cancel</a>
+        </form>
+        {% else %}
+        <p class="govuk-body">By clicking Confirm unpublish, you are confirming that you want this barrier to be removed from <a class="govuk-link" href="https://www.check-international-trade-barriers.service.gov.uk/" target="_blank">check international trade barriers (opens in new tab)</a>.</p>
+    <form class="form" action="barrier-information-public?publish-status=unpublished" method="post">
+        <input type="hidden" id="conf-banner-state" name="conf-banner-state" value="unpublished set">  
+        {{ govukCharacterCount({
+            name: "unpublish-reason",
+            id: "unpublish-reason",
+            maxlength: 500,
+            rows: 4,
+            label: {
+            text: "Reason for unpublishing",
+            classes: "govuk-label--s",
+            isPageHeading: true
+            },
+            hint: {
+            text: "Please describe why you are unpublishing this barrier."
+            }
+        }) }}
+
+        {{ govukButton({
+        text: "Confirm unpublish"
+        }) }}
+        <a href="#" class="govuk-link form-cancel">Cancel</a>
+    </form>
+    {% endif %}
+    </div>
+</div>
+
+{% endblock %}

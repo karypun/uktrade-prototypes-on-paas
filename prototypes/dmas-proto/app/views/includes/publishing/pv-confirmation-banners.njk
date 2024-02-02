@@ -112,6 +112,22 @@ Confirmation banner state session data: {{ data['conf-banner-state'] }} #}
         }) }}
     {% endif %}
 
+    <!-- BARRIER PUBLIC PUBLISH STATUS UPDATED -->
+    {% if confBannerState == 'unpublished set'%}
+        {% set html %}
+        <h3 class="govuk-notification-banner__heading">
+            Barrier has been unpublished
+        </h3>
+            <p class="govuk-body">You successfully unpublished this barrier. It no longer appears on <a class="govuk-notification-banner__link" href="https://www.check-international-trade-barriers.service.gov.uk/" target="_blank">check an international trade barrier.</a></p>
+        {% endset %}
+
+        {{ govukNotificationBanner({
+        html: html,
+        type: "success",
+        classes: "govuk-!-margin-bottom-0 govuk-!-padding-bottom-0"
+        }) }}
+    {% endif %}
+
     <!-- MVE PUBLISH ALLOWED AND TITLE / SUMMARY PROVIDED -->
     {% if confBannerState == 'mve-can-be-published-and-title-and-summary'%}
         {% set html %}

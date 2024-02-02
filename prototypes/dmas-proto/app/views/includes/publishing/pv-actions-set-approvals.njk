@@ -2,17 +2,22 @@
 {% set pvTitle = data['public-title'] %}
 {% set pvSummary = data['public-summary'] %}
 {% set pvApprovalStatus = data['approval-status'] %}
+{% if data['user-role-type'] %} {% set userType = data['user-role-type'] %} {% else %} {% set userType = 'gu' %} {% endif %}
+
+<!-- read in default approvers -->
+{% set defaultapproversList = data.defaultApprovers %}
+
 {#}
 {% set pvPublishAllowedStatus = 'allowed' %}
 {% set pvTitleStatus = 'entered' %}
 {% set pvSummaryStatus = 'entered' %}
 {% set pvApprovalStatus = 'not approved' %} #}
-{% set userType = 'gu' %}
+
 <!-- NEED TO COME BACK AND SET AN OVERALL PUBLIC VIEW STATUS VAR -->
 
 {% if userType == 'gu' %}  <!-- Will be easier to handle usertypes within each action card but for now just check overall and display accordingly -->
     
-<!-- IF PV NOT ALLOWED WE SUPRESS THE COMPONENT -->
+    <!-- IF PV NOT ALLOWED WE SUPRESS THE COMPONENT -->
     {% if pvPublishAllowedStatus == "Cannot be published" %}
 
     <!-- IF PV NOT SET OR SET BUT NO TITLE AND SUMMARY -->
@@ -32,11 +37,10 @@
                 <h3 class="govuk-heading-s govuk-!-margin-bottom-3">Approvals</h3>
             </div>
             <p class="govuk-body">The approver is reviewing this barrier with the following people:</p>
-            <ul class="govuk-list govuk-list--bullet govuk-list--spaced govuk-!-margin-bottom-0">
-                <li class="govuk-body">Market Access Regional Coordinators</li>
-                <li class="govuk-body">BTR Regional Teams</li>
-                <li class="govuk-body">Department for Levelling Up, Housing and Communities</li>
-                <li class="govuk-body">Department for Environment, Food & Rural Affairs</li>
+            <ul class="govuk-lis govuk-list--bullet govuk-list--spaced govuk-!-margin-bottom-0">
+                {% for item in defaultapproversList %}  
+                    <li class="govuk-body">{{ item }} </li>
+                {% endfor %}
             </ul>
             <p class="govuk-body">They will then confirm if they are happy for the barrier to made public on GOV.UK.</p>
         </div>
@@ -49,11 +53,10 @@
             </div>
             <p class="govuk-body">The barrier has been approved by: [approvers name here].</p>
             <p class="govuk-body">They checked it with the following people or organisations:</p>
-            <ul class="govuk-list govuk-list--bullet govuk-list--spaced govuk-!-margin-bottom-0">
-                <li class="govuk-body">Market Access Regional Coordinators</li>
-                <li class="govuk-body">BTR Regional Teams</li>
-                <li class="govuk-body">Department for Levelling Up, Housing and Communities</li>
-                <li class="govuk-body">Department for Environment, Food & Rural Affairs</li>
+            <ul class="govuk-lis govuk-list--bullet govuk-list--spaced govuk-!-margin-bottom-0">
+                {% for item in defaultapproversList %}  
+                    <li class="govuk-body">{{ item }} </li>
+                {% endfor %}
             </ul>
         </div>
 
@@ -65,17 +68,113 @@
             </div>
             <p class="govuk-body">The barrier has been approved by: [approvers name here].</p>
             <p class="govuk-body">They checked it with the following people or organisations:</p>
-            <ul class="govuk-list govuk-list--bullet govuk-list--spaced govuk-!-margin-bottom-0">
-                <li class="govuk-body">Market Access Regional Coordinators</li>
-                <li class="govuk-body">BTR Regional Teams</li>
-                <li class="govuk-body">Department for Levelling Up, Housing and Communities</li>
-                <li class="govuk-body">Department for Environment, Food & Rural Affairs</li>
+            <ul class="govuk-lis govuk-list--bullet govuk-list--spaced govuk-!-margin-bottom-0">
+                {% for item in defaultapproversList %}  
+                    <li class="govuk-body">{{ item }} </li>
+                {% endfor %}
             </ul>
         </div>
     {% endif %}
 
 {% endif %}
 
+{% if userType == 'ap' %}
+    <!-- IF PV NOT ALLOWED WE SUPRESS THE COMPONENT -->
+    {% if pvPublishAllowedStatus == "Cannot be published" %}
+
+    <!-- IF PV NOT SET OR SET BUT NO TITLE AND SUMMARY -->
+    {% elseif not pvPublishAllowedStatus or pvPublishAllowedStatus and not pvTitle or not pvSummary %}  
+        <!-- show first time box style -->
+        <div class="information-box information-box__notset">
+                <div class="govuk-summary-list__ro  w">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">Approvals</h3>
+                </div>     
+                <p class="govuk-body govuk-hint govuk-!-margin-bottom-2">You cannot review this barrier until a title and summary have been added.</p>
+        </div>
+
+    <!-- IF PV SET AND TITLE AND SUMMARY ADDED BUT NOT APPROVED YET --> 
+    {% elseif pvPublishAllowedStatus == "Can be published" and pvTitle and pvSummary and not pvApprovalStatus %} 
+        <div class="information-box">
+            <div class="govuk-summary-list__row">
+                <h2 class="govuk-heading-m govuk-!-margin-bottom-3">Approval</h2>
+            </div>
+            <p class="govuk-body">As the approver of this barrier, you need to confirm you have checked it with the following people or organisations:</p>
+            <ul class="govuk-lis govuk-list--bullet govuk-list--spaced govuk-!-margin-bottom-0">
+                {% for item in defaultapproversList %}  
+                    <li class="govuk-body">{{ item }} </li>
+                {% endfor %}
+            </ul>
+            <ul class="govuk-list ">
+                <li class="govuk-!-margin-top-0"><a href="#" class="govuk-link--no-visited-state govuk-!-font-size-19">Edit approvers</a></li>
+            </ul>
+            <form class="form" action="edit-barrier-approvals-confirm" method="post">
+                {{ govukButton({
+                    text: "Approve barrier",
+                    classes: "govuk-!-margin-bottom-1"
+                }) }}
+            </form>
+        </div>
+
+    <!-- IF PV SET AND TITLE AND SUMMARY ADDED AND APPROVED --> 
+    {% elseif pvPublishAllowedStatus == "Can be published" and pvTitle and pvSummary and pvApprovalStatus == "approved" and not pvPublishStatus %} 
+        <div class="information-box">
+            <div class="govuk-summary-list__row">
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-3">Approvals</h3>
+            </div>
+            <p class="govuk-body">The barrier has been approved by: [approvers name here].</p>
+            <p class="govuk-body">They checked it with the following people or organisations:</p>
+            <!-- Approvers list from session defaults -->
+            <ul class="govuk-lis govuk-list--bullet govuk-list--spaced govuk-!-margin-bottom-0">
+                {% for item in defaultapproversList %}  
+                    <li class="govuk-body">{{ item }} </li>
+                {% endfor %}
+            </ul>
+            <form class="form" action="#" method="post">
+            {{ govukButton({
+                text: "Revert to unapproved",
+                classes: "govuk-button--secondary govuk-!-margin-bottom-1"                
+            }) }}
+            </form>
+        </div>
+
+    <!-- IF PV SET AND TITLE AND SUMMARY ADDED AND APPROVED AND PUBLISHED --> 
+    {% elseif pvPublishAllowedStatus == "Can be published" and pvTitle and pvSummary and pvApprovalStatus == "approved" and pvPublishStatus == "published" %} 
+        <div class="information-box">
+            <div class="govuk-summary-list__row">
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-3">Approvals</h3>
+            </div>
+            <p class="govuk-body">The barrier has been approved by: [approvers name here].</p>
+            <p class="govuk-body">They checked it with the following people or organisations:</p>
+            <!-- Approvers list from session defaults -->
+            <ul class="govuk-lis govuk-list--bullet govuk-list--spaced govuk-!-margin-bottom-0">
+                {% for item in defaultapproversList %}  
+                    <li class="govuk-body">{{ item }} </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+{% endif %}
+
+{% if userType == 'cd' %}
+    <!-- Publisher only sees a single box up until barrier is approved and passed to them - logic on pv-actions-set-publish include -->
+    {% if not pvPublishAllowedStatus and not pvTitle and not pvSummary and not pvApprovalStatus and not pvPublishStatus %}
+        <!-- SUPPRESS ACTION CARDS -->
+    {% elseif pvApprovalStatus == "approved" %}
+    <div class="information-box">
+        <div class="govuk-summary-list__row">
+            <h3 class="govuk-heading-s govuk-!-margin-bottom-3">Approvals</h3>
+        </div>
+        <p class="govuk-body">The barrier has been approved by: [approvers name here].</p>
+        <p class="govuk-body">They checked it with the following people or organisations:</p>
+        <!-- Approvers list from session defaults -->
+        <ul class="govuk-lis govuk-list--bullet govuk-list--spaced govuk-!-margin-bottom-0">
+            {% for item in defaultapproversList %}  
+                <li class="govuk-body">{{ item }} </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+{% endif %}
 
 <!-- GU RULES
 If allowed set and not allowed then hide
@@ -84,36 +183,3 @@ if allowed set and title and summary and not approved = assume with approver or 
 if allowed set and title and summary and approved = assume with content team
 if allowed set and title and summary and approved and published = published
 -->
-
-
-
-        <!-- IF USER = APPROVER -->
-            {# {% elseif pvPublishAllowedStatus == "Can be published" and pvTitle and pvSummary %} 
-    
-        <div class="information-box">
-            <div class="govuk-summary-list__row">
-                <h2 class="govuk-heading-m govuk-!-margin-bottom-3">Approval</h2>
-            </div>
-            <h3 class="govuk-!-margin-top-0 govuk-!-margin-bottom-1">Approvers for this barrier:</h3>
-            <ul class="govuk-list govuk-list--bullet govuk-list--spaced govuk-!-margin-bottom-0">
-                <li>Market Access Regional Coordinators</li>
-                <li>BTR Regional Teams</li>
-                <li>Department for Levelling Up, Housing and Communities</li>
-                <li>Department for Environment, Food & Rural Affairs</li>
-            </ul>
-            {% if not pvApprovalStatus %}
-                <ul class="govuk-list ">
-                    <li class="govuk-!-margin-top-0"><a href="#" class="govuk-link--no-visited-state govuk-!-font-size-19">Edit approvers</a></li>
-                </ul>
-                {{ govukButton({
-                    text: "Mark as approved",
-                    classes: "govuk-!-margin-bottom-1"
-                }) }}
-            {% else %}
-                {{ govukButton({
-                    text: "Mark as not approved",
-                    classes: "govuk-button--secondary govuk-!-margin-bottom-1"                
-                }) }}
-            {% endif %}
-        </div>
-        #}

@@ -1,0 +1,63 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Public title – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+<!-- read in default approvers -->
+{% set defaultapproversList = data.defaultApprovers %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">
+        Confirm approvals
+    </h1>
+    <p class="govuk-body">Please read the following text and choose the appropriate option.</p>
+    <p class="govuk-body">Curabitur laoreet enim justo, sit amet pharetra tellus ultrices a. Phasellus blandit tincidunt purus, et ultricies libero placerat ut. Donec auctor mauris sagittis arcu eleifend auctor. Duis rhoncus sapien sit amet purus condimentum, eget vehicula lacus hendrerit. Duo et beavi a buthea con falio ming. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+
+    <!-- Approvers list from session defaults -->
+    <ul class="govuk-lis govuk-list--bullet govuk-list--spaced govuk-!-margin-bottom-7">
+        {% for item in defaultapproversList %}  
+            <li class="govuk-body">{{ item }} </li>
+        {% endfor %}
+    </ul>
+
+    <form class="form" action="barrier-information-public" method="post">
+        <input type="hidden" id="conf-banner-state" name="conf-banner-state" value="approval set">
+        {{ govukCheckboxes({
+            name: "approval-status",
+            fieldset: {        
+            },
+            items: [
+            {
+                value: "approved",
+                text: "I confirm I wish to mark this barrier as approved and ready for the content team to review"
+            }
+            ]
+        }) }}
+
+        {{ govukCharacterCount({
+            name: "approval-extra-detail",
+            id: "barrier-description",
+            maxlength: 500,
+            rows: 4,
+            label: {
+            text: "Additional information",
+            classes: "govuk-label--s",
+            isPageHeading: true
+            },
+            hint: {
+            text: "Please add any additional information you feel is relevant to this decision."
+            }
+        }) }}
+
+        {{ govukButton({
+        text: "Save and return"
+        }) }}
+        <a href="#" class="govuk-link form-cancel">Cancel</a>
+    </form>
+    </div>
+</div>
+
+{% endblock %}

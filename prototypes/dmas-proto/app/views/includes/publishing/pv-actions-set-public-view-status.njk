@@ -1,10 +1,43 @@
 {% set pvPublishAllowedStatus = data['barrier-public-view-status'] %}
+{% if data['user-role-type'] %} {% set userType = data['user-role-type'] %} {% else %} {% set userType = 'gu' %} {% endif %}
+ 
 {# {% set pvPublishAllowedStatus = 'not allowed' %} #}
-{% set userType = 'gu' %}
+
 
 {% if userType == 'gu' %} <!-- Will be easier to handle usertypes within each action card but for now just check overall and display accordingly -->
 <!-- Check if first time and show dashed box if so -->
 <div class="information-box {% if not pvPublishAllowedStatus %}information-box__notset">{% else %}">{% endif %}
+    <div class="govuk-summary-list__row">
+            <h3 class="govuk-heading-s govuk-!-margin-bottom-3">Should this barrier be made public on GOV.UK once it has been approved?</h3>
+    </div>     
+    
+    <!-- IF NOT SET YET -->
+    {% if not pvPublishAllowedStatus %}
+        <a href="edit-publishing-status" class="govuk-link--no-visited-state govuk-!-font-size-19">Barrier publication status</a>
+    {% endif %}
+
+    <!-- IF NOT ALLOWED -->
+    {% if pvPublishAllowedStatus == 'Cannot be published' %}
+        <p class="govuk-body govuk-!-margin-bottom-2">No</p>
+        <p class="govuk-body govuk-!-margin-bottom-2"><span class="govuk-!-font-weight-bold">Reason:</span> {{ data['barrier-not-allowed-desc'] }}</p>
+        <a href="edit-publishing-status" class="govuk-link--no-visited-state govuk-!-font-size-19">Edit</a>
+    {% endif %}    
+
+    <!-- IF ALLOWED -->   
+    {% if pvPublishAllowedStatus == "Can be published" %}
+        <p class="govuk-body govuk-!-margin-bottom-2">Yes</p>
+        {% if pvTitle and pvSummary %}
+        <!-- SUPPRESS EDIT -->
+        {% else %}
+        <a href="edit-publishing-status" class="govuk-link--no-visited-state govuk-!-font-size-19">Edit</a>
+        {% endif %}
+    {% endif %}
+</div>
+{% endif %}
+
+{% if userType == 'ap' %}
+    <!-- Check if first time and show dashed box if so -->
+    <div class="information-box {% if not pvPublishAllowedStatus %}information-box__notset">{% else %}">{% endif %}
         <div class="govuk-summary-list__row">
                 <h3 class="govuk-heading-s govuk-!-margin-bottom-3">Should this barrier be made public on GOV.UK once it has been approved?</h1>
         </div>     
@@ -24,17 +57,28 @@
         <!-- IF ALLOWED -->   
         {% if pvPublishAllowedStatus == "Can be published" %}
             <p class="govuk-body govuk-!-margin-bottom-2">Yes</p>
-            {% if pvTitle and pvSummary %}
-            <!-- SUPPRESS EDIT -->
-            {% else %}
+            {% if not pvApprovalStatus and not pvPublishStatus %}
             <a href="edit-publishing-status" class="govuk-link--no-visited-state govuk-!-font-size-19">Edit</a>
+            {% else %}
+            <!-- SUPPRESS EDIT -->
             {% endif %}
-        {% endif %}    
-
-
-</div>
+        {% endif %}
+    </div>
 {% endif %}
 
+{% if userType == 'cd' %}
+<!-- Publisher only sees a single box up until barrier is approved and passed to them - logic on pv-actions-set-publish include -->
+    {% if not pvPublishAllowedStatus and not pvTitle and not pvSummary and not pvApprovalStatus and not pvPublishStatus %}
+    <!-- SUPPRESS ACTION CARDS -->
+    {% elseif pvApprovalStatus == "approved" %}
+    <div class="information-box {% if not pvPublishAllowedStatus %}information-box__notset">{% else %}">{% endif %}
+        <div class="govuk-summary-list__row">
+            <h3 class="govuk-heading-s govuk-!-margin-bottom-3">Should this barrier be made public on GOV.UK once it has been approved?</h3>
+            <p class="govuk-body govuk-!-margin-bottom-2">Yes</p>
+        </div>
+    </div>
+    {% endif %}
+{% endif %}
 
 <!-- GU RULES
 If not set then allow to be set

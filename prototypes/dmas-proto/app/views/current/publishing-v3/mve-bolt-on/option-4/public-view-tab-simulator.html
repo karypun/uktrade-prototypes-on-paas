@@ -17,34 +17,34 @@ user role: {{ data['user-role-type'] }}
 {% if data['user-role-type'] %} <h1>Logged in as '{{ data['user-role-type'] }}' ({{ data['user-role-type-friendly'] }})</h1>{% endif %}
 <h2>Publish states</h2>
 
-<p class="govuk-body">Use these links to simulate the various states the public view tab will a</p>
+<p class="govuk-body">Use these links to simulate the various states of the public view tab during the publishing journey</p>
 <ul class="govuk-list">
     <li>
-      <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information-public?barrier-public-view-status=&public-title=&public-summary=&publicViewState=&conf-banner-state=&user-role-type={{ data['user-role-type'] }}">Existing barrier - no publishing started</a>
+      <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information-public?barrier-public-view-status=&public-title=&public-summary=&approval-status=&publicViewState=&conf-banner-state=&user-role-type={{ data['user-role-type'] }}">Existing barrier - no publishing started</a>
     </li>
     <li>
-        <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information-public?barrier-public-view-status=Cannot be published&barrier-not-allowed-desc=test reason&public-title=&public-summary=&publicViewState=&conf-banner-state=mve-cannot-be-published&notes-state=mve-cannot-be-published&user-role-type={{ data['user-role-type'] }}">MVE journey barrier created - Publishing not allowed </a>
+        <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information-public?barrier-public-view-status=Cannot be published&barrier-not-allowed-desc=test reason&public-title=&public-summary=&approval-status=&publicViewState=&conf-banner-state=mve-cannot-be-published&notes-state=mve-cannot-be-published&user-role-type={{ data['user-role-type'] }}">MVE journey barrier created - Publishing not allowed </a>
     </li>
     <li>
-      <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information-public?barrier-public-view-status=Can be published&public-title&public-summary&publicViewState=title or summary not added&conf-banner-state=mve-can-be-published-no-title-and-summary&notes-state=mve-can-be-published-no-title-and-summary&user-role-type={{ data['user-role-type'] }}">MVE journey barrier created - Publishing allowed, no title or summary</a>
+      <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information-public?barrier-public-view-status=Can be published&public-title=&public-summary=&approval-status=&publicViewState=title or summary not added&conf-banner-state=mve-can-be-published-no-title-and-summary&notes-state=mve-can-be-published-no-title-and-summary&user-role-type={{ data['user-role-type'] }}">MVE journey barrier created - Publishing allowed, no title or summary</a>
     </li>
     <li>
       <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information-public?barrier-public-view-status=Can be published&public-title=Electronics to Iceland&public-summary=Exporting electronics to Iceland are frozen at present.&approval-status=&publish-status=&publicViewState=awaiting approval&conf-banner-state=mve-can-be-published-and-title-and-summary&notes-state=mve-can-be-published-and-title-and-summary&user-role-type={{ data['user-role-type'] }}">MVE journey barrier created - Publishing allowed, title and summary added</a>
     </li>
     <li>
-      <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information-public?barrier-public-view-status=Can be published&public-title=&public-summary=&publicViewState=Can be published&conf-banner-state=can be published set&user-role-type={{ data['user-role-type'] }}">Publishing allowed</a>
+      <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information-public?barrier-public-view-status=Can be published&public-title=&public-summary=&approval-status=&publicViewState=Can be published&conf-banner-state=can be published set&user-role-type={{ data['user-role-type'] }}">Publishing allowed</a>
     </li>
     <li>
-      <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information-public?barrier-public-view-status=Cannot be published&public-title&public-summary&publicViewState=Cannot be published&conf-banner-state=can be published set&user-role-type={{ data['user-role-type'] }}">Publishing not allowed</a>
+      <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information-public?barrier-public-view-status=Cannot be published&public-title=&public-summary=&publicViewState=Cannot be published&conf-banner-state=can be published set&user-role-type={{ data['user-role-type'] }}">Publishing not allowed</a>
     </li>
     <li>
         (Not yet designed) <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information-public?barrier-public-view-status=Cannot be published&user-role-type={{ data['user-role-type'] }}">Publishing not allowed but title and description added at some point</a>
       </li>
     <li>
-      <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information-public?barrier-public-view-status=Can be published&public-title&public-summary&publicViewState=title or summary not added&conf-banner-state=can be published set&user-role-type={{ data['user-role-type'] }}">Publishing allowed, no title or summary</a>
+      <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information-public?barrier-public-view-status=Can be published&public-title=&public-summary=&approval-status=&publicViewState=title or summary not added&conf-banner-state=can be published set&user-role-type={{ data['user-role-type'] }}">Publishing allowed, no title or summary</a>
     </li>
     <li>
-        <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information-public?barrier-public-view-status=Can be published&public-title=Electronics to Iceland&public-summary&publicViewState=title or summary not added&conf-banner-state=public title set&user-role-type={{ data['user-role-type'] }}">Publishing allowed, title added, no summary</a>
+        <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information-public?barrier-public-view-status=Can be published&public-title=Electronics to Iceland&public-summary=&approval-status=&publicViewState=title or summary not added&conf-banner-state=public title set&user-role-type={{ data['user-role-type'] }}">Publishing allowed, title added, no summary</a>
     </li>
     <li>
         <a class="govuk-link" href="/current/publishing-v3/mve-bolt-on/option-4/barrier-information-public?barrier-public-view-status=Can be published&public-title=Electronics to Iceland&public-summary=Exporting electronics to Iceland are frozen at present.&approval-status=&publicViewState=awaiting approval&conf-banner-state=public summary set&user-role-type={{ data['user-role-type'] }}">Publishing allowed, title added, summary added, not yet approved</a>

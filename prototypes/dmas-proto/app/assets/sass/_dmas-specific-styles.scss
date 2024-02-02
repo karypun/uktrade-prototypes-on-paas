@@ -55,6 +55,13 @@ Set DMAS font stack
 }
 */
 
+/*
+------------------------------------------------
+INFORMATION BOX START
+used to style card components on public view tab 
+------------------------------------------------
+*/
+
 .information-box {
 	padding: 10px 10px 10px 10px;
 	flex: 1;
@@ -98,6 +105,8 @@ Set DMAS font stack
 		}
 	}
 }
+
+/* INFORMATION BOX COMPONENT END */
 
 /*
 ----------------------------

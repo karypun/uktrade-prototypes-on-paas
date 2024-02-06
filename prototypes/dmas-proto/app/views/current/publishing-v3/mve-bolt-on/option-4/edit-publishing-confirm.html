@@ -11,21 +11,25 @@
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l">
-        Confirm publishing
-    </h1>
     {% if pvPublishStatus == 'published' %}
-    <p class="govuk-body govuk-!-margin-bottom-6">By clicking Confirm publish, you are confirming that you want this barrier to be made public and appear on <a class="govuk-link" href="https://www.check-international-trade-barriers.service.gov.uk/" target="_blank">check international trade barriers (opens in new tab)</a>.</p>
-    <form class="form" action="barrier-information-public?publish-status=published" method="post">
-        <input type="hidden" id="conf-banner-state" name="conf-banner-state" value="published set">
-        {{ govukButton({
-        text: "Confirm publish"
-        }) }}
-        <a href="barrier-information-public?publish-status=&conf-banner-state=" class="govuk-link form-cancel">Cancel</a>
-        </form>
-        {% else %}
-        <p class="govuk-body">By clicking Confirm unpublish, you are confirming that you want this barrier to be removed from <a class="govuk-link" href="https://www.check-international-trade-barriers.service.gov.uk/" target="_blank">check international trade barriers (opens in new tab)</a>.</p>
-    <form class="form" action="barrier-information-public?publish-status=unpublished" method="post">
+        <h1 class="govuk-heading-l">
+            Confirm you want to publish this barrier on GOV.UK
+        </h1>
+
+        <p class="govuk-body govuk-!-margin-bottom-6">By choosing to publish this barrier, you confirm that you want it to be made public on <a class="govuk-link" href="https://www.check-international-trade-barriers.service.gov.uk/" target="_blank">check international trade barriers (opens in new tab)</a>.</p>
+        <form class="form" action="barrier-information-public?publish-status=published" method="post">
+            <input type="hidden" id="conf-banner-state" name="conf-banner-state" value="published set">
+            {{ govukButton({
+            text: "Confirm"
+            }) }}
+            <a href="barrier-information-public?publish-status=&conf-banner-state=" class="govuk-link form-cancel">Cancel</a>
+            </form>
+    {% else %}
+        <h1 class="govuk-heading-l">
+            Confirm you want to remove this barrier on GOV.UK
+        </h1>
+        <p class="govuk-body">By choosing to remove this barrier, you confirm that you no longer want it to be made public on <a class="govuk-link" href="https://www.check-international-trade-barriers.service.gov.uk/" target="_blank">check international trade barriers (opens in new tab)</a>.</p>
+        <form class="form" action="barrier-information-public?publish-status=unpublished" method="post">
         <input type="hidden" id="conf-banner-state" name="conf-banner-state" value="unpublished set">  
         {{ govukCharacterCount({
             name: "unpublish-reason",
@@ -33,17 +37,17 @@
             maxlength: 500,
             rows: 4,
             label: {
-            text: "Reason for unpublishing",
+            text: "Reason for removing the barrier",
             classes: "govuk-label--s",
             isPageHeading: true
             },
             hint: {
-            text: "Please describe why you are unpublishing this barrier."
+            text: "Please explain why you think this barrier should be removed from the GOV.UK page."
             }
         }) }}
 
         {{ govukButton({
-        text: "Confirm unpublish"
+        text: "Confirm"
         }) }}
         <a href="#" class="govuk-link form-cancel">Cancel</a>
     </form>

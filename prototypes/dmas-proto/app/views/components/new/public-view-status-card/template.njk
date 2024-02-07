@@ -1,4 +1,4 @@
-{# Pass values into macro (params): barrierState #} 
+{# Pass values into macro (params): barrierState, loggedInUser #} 
 {# Public view state: {{ params.publicViewState }} #}
 <!-- Add logic to display type of barrier based on publicViewState var -->
 {% if params.publicViewState == "notset" %}
@@ -41,12 +41,22 @@
 {% endif %}
 
 {% if params.publicViewState == "approved" %}
+    {% if params.loggedInUser == "gu" or params.loggedInUser == "ap"%}
     <div class="pv-status pv-status__inprogress">
     <h2 class="pv-status__heading govuk-!-margin-bottom-0 govuk-!-margin-top-0">The GOV.UK team are reviewing the content</h2>
     <p class="govuk-!-margin-0 govuk-!-padding-top-2">
         They need to do complete their checks within the next 30 days. They can then publish the barrier and update the status.
     </p>
     </div>
+    <!-- bit of a fudge to show an alternate message for the publisher -->
+    {% elseif params.loggedInUser == "cd" %}
+    <div class="pv-status pv-status__inprogress">
+    <h2 class="pv-status__heading govuk-!-margin-bottom-0 govuk-!-margin-top-0">Complete the content checks for this barrier</h2>
+    <p class="govuk-!-margin-0 govuk-!-padding-top-2">
+        You need to complete your content checks within the next 30 days. You can then publish the barrier and update the publication status.
+    </p>
+    </div>
+    {% endif %}
 {% endif %}
 
 {% if params.publicViewState == "published" %}

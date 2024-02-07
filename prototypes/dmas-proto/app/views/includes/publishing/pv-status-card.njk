@@ -1,6 +1,8 @@
                 <!-- DISPLAY STATUS BASED ON STATE OF BARRIER -->
                 <!-- CONSIDER COMING BACK AND MAINTAINING AN ARRAY -->
 
+                {% set userType = data['user-role-type'] %}
+
                 <!-- NOTHING SET YET -->
                 {% if not pvPublishAllowedStatus %}
                     {{ appPublicViewStatus({
@@ -28,7 +30,8 @@
                 <!-- CAN BE PUBLISHED, HAS TITLE AND SUMMARY, IS APPROVED AND NEEDS TO BE PUBLISHED -->  
                 {% elseif pvPublishAllowedStatus == 'Can be published' and pvTitle and pvSummary and pvApprovalStatus == 'approved' and not pvPublishStatus %}
                     {{ appPublicViewStatus({
-                        publicViewState: 'approved'
+                        publicViewState: 'approved',
+                        loggedInUser: userType
                         })
                     }}
                 <!-- CAN BE PUBLISHED, HAS TITLE AND SUMMARY, IS APPROVED AND IS PUBLISHED -->  

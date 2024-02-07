@@ -138,32 +138,41 @@
             </div>
         </div>
     {% elseif pvApprovalStatus == "approved" %}
-        <div class="information-box">
-            <div class="govuk-summary-list__row">
-                <h3 class="govuk-heading-s govuk-!-margin-bottom-3">Publishing</h3>
-                <p class="govuk-body">When you have completed your content checks you can publish this barrier.</p>
-            </div> 
         {% if not pvPublishStatus %}
-        <form class="form" action="edit-publishing-confirm?publish-status=published" method="post">
-            {{ govukButton({
-                text: "Publish",
-                classes: "govuk-!-margin-bottom-1"
-            }) }}
-            {#}
-            {{ govukButton({
-                text: "Mark as rejected",
-                classes: "govuk-button--secondary govuk-!-margin-bottom-1"                
-            }) }} #}
-        </form>
+            <div class="information-box">
+                <div class="govuk-summary-list__row">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">Publishing</h3>
+                    <p class="govuk-body">When you have completed your content checks you can publish this barrier.</p>
+                </div> 
+
+                <form class="form" action="edit-publishing-confirm?publish-status=published" method="post">
+                    {{ govukButton({
+                        text: "Publish",
+                        classes: "govuk-!-margin-bottom-1"
+                    }) }}
+                    {#}
+                    {{ govukButton({
+                        text: "Mark as rejected",
+                        classes: "govuk-button--secondary govuk-!-margin-bottom-1"                
+                    }) }} #}
+                </form>
+            </div>
         {% else %}
-        <form class="form" action="edit-publishing-confirm?publish-status=unpublished" method="post">
-            {{ govukButton({
-                text: "Unpublish",
-                classes: "govuk-button--secondary govuk-!-margin-bottom-1"                
-            }) }}
-        </form>
+            <div class="information-box">
+                <div class="govuk-summary-list__row">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">Publishing</h3>
+                    <p class="govuk-body">This barrier was published by [name] on [date]</p>
+                    <p class="govuk-body">If you want to make changes to this barrier you will need need to set the status to unpublish and check it with the approver.</p>
+                </div>
+                <form class="form" action="edit-publishing-confirm?publish-status=unpublished" method="post">
+                    {{ govukButton({
+                        text: "Unpublish",
+                        classes: "govuk-button--secondary govuk-!-margin-bottom-1"                
+                    }) }}
+                </form>
+            </div>
         {% endif %}
-        </div>
+
     {% endif %}
 {% endif %}
 

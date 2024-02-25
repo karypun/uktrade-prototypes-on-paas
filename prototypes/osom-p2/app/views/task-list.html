@@ -13,7 +13,7 @@
 
       <h1 class="govuk-heading-l">{{ serviceName }}</h1>
 
-      <h2 class="govuk-heading-m">[ Heading for first set of tasks ]</h2>
+      <h2 class="govuk-heading-m">Prepare application</h2>
 
       {% set completedStatus = {
         text: "Completed"
@@ -33,14 +33,14 @@
         items: [
           {
             title: {
-              text: "Name of first task"
+              text: "Security approval you are applying for"
             },
-            href: "#",
+            href: "application-type",
             status: completedStatus
           },
           {
             title: {
-              text: "Name of second task"
+              text: "Contact details"
             },
             href: "#",
             status: incompleteStatus
@@ -48,42 +48,42 @@
         ]
       }) }}
 
-      <h2 class="govuk-heading-m govuk-!-margin-top-5">[ Heading for second set of tasks ]</h2>
+      <h2 class="govuk-heading-m govuk-!-margin-top-5">Tell us about the products</h2>
 
       {{ govukTaskList({
         idPrefix: "second-section",
         items: [
           {
             title: {
-              text: "Name of third task"
+              text: "Product list"
             },
             href: "#",
             status: completedStatus
           },
           {
             title: {
-              text: "Name of fifth task"
+              text: "Cryptography details"
             },
             href: "#",
             status: incompleteStatus
           },
           {
             title: {
-              text: "Name of sixth task"
+              text: "Funding"
             },
             href: "#",
             status: completedStatus
           },
           {
             title: {
-              text: "Name of seventh task"
+              text: "Security classification"
             },
             href: "#",
             status: incompleteStatus
           },
           {
             title: {
-              text: "Name of eighth task"
+              text: "Proposed release details"
             },
             href: "#",
             status: incompleteStatus
@@ -91,8 +91,37 @@
         ]
       }) }}
 
+      <h2 class="govuk-heading-m govuk-!-margin-top-5">Provide us with the end-use details</h2>
+
+      {{ govukTaskList({
+        idPrefix: "third-section",
+        items: [
+          {
+            title: {
+              text: "Intended end use and destination details"
+            },
+            href: "#",
+            status: completedStatus
+          },
+          {
+            title: {
+              text: "End user summary"
+            },
+            href: "#",
+            status: incompleteStatus
+          },
+          {
+            title: {
+              text: "Supporting documents"
+            },
+            href: "#",
+            status: completedStatus
+          }
+        ]
+      }) }}
+
       <div class="govuk-!-margin-top-5">
-        {{ govukButton({ text: "Apply", href: "#" }) }}
+        {{ govukButton({ text: "Apply", href: "application-type" }) }}
       </div>
 
     </div>

@@ -20,38 +20,33 @@
         Is your clearance required for an Open licences?
       </h1> -->
 
-      <form class="form" action="clearance-open-licence-details" method="post">
+      <form class="form" action="clearance-early" method="post">
 
         <div class="govuk-form-group">
          <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
              <h1 class="govuk-fieldset__heading">
-               Is your clearance required for Open licences?
+               Open general licence name
              </h1>
            </legend>
            <div id="contact-hint" class="govuk-hint">
-             This includes the Open General Export Licence (OGL) or other Open licences.
-           </div>
-
-           <div class="govuk-radios" data-module="govuk-radios">
-             <div class="govuk-radios__item">
-               <input class="govuk-radios__input" id="whereDoYouLive" name="whereDoYouLive" type="radio" value="england">
-               <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
-                 Yes
-               </label>
-             </div>
-             <div class="govuk-radios__item">
-               <input class="govuk-radios__input" id="whereDoYouLive-2" name="whereDoYouLive" type="radio" value="scotland">
-               <label class="govuk-label govuk-radios__label" for="whereDoYouLive-2">
-                 No
-               </label>
-             </div>
-
 
            </div>
+
+           <div class="govuk-form-group">
+  <label class="govuk-label" for="sort">
+    OGL name
+  </label>
+  <select class="govuk-select" id="sort" name="sort">
+    <option value="published">Export after repair / replacement under warranty: dual-use items</option>
+    <option value="updated" selected>Export after repair / replacement under warranty: dual-use items</option>
+    <option value="views">Add another</option>
+    <option value="comments">Add another</option>
+  </select>
+</div>
          </fieldset>
        </div>
-
+<p><a href="#">Add another OGL</a></p>
         {{ govukButton({
           text: "Continue"
         }) }}

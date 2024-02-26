@@ -1,0 +1,51 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Product details
+      </h1>
+<p>Use this screen to upload relevant documentation to support your application.</p>
+<p>If there is a requirement to release UK MOD owned EW data or information in support of this export you ust complete Part A of the <a href="#">EW Data Release Capture Form</a>. Once
+complete, upload the form to this screen.</p>
+
+<div class="govuk-inset-text">
+  No information above OFFICIAL-SENSITIVE should be uploaded using this online application. For anything this is classified OFFICIAL-SENSITIVE
+  and above post to: <br>
+  [Address]
+</div>
+
+      <form class="form" action="check-answers" method="post">
+
+        <div class="govuk-form-group">
+    <label class="govuk-label" for="file-upload-1">
+      Upload a file
+    </label>
+    <input class="govuk-file-upload" id="file-upload-1" name="fileUpload1" type="file">
+  </div>
+        <!--  -->
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Product list
+      </h1>
+      <form class="form" action="cryptography" method="post">
+
+<!--  -->
+<div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--m" for="account-number">
+      Name
+    </label>
+  </h1>
+  <div id="account-number-hint" class="govuk-hint">
+    Enter the product that is the subject of this application
+  </div>
+  <input class="govuk-input govuk-input--width-10" id="account-number" name="accountNumber" type="text" spellcheck="false" aria-describedby="account-number-hint" inputmode="numeric">
+</div>
+<!--  -->
+<div class="govuk-form-group">
+<h1 class="govuk-label-wrapper">
+<label class="govuk-label govuk-label--m" for="more-detail">
+Description
+</label>
+</h1>
+<div id="more-detail-hint" class="govuk-hint">
+Provide a description of the product you are seeking approval to release. Inclue any detailed technical specifications.
+</div>
+<textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
+</div>
+<!--  -->
+<p><a href="#">Add another product</a></p>
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

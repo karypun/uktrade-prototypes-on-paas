@@ -16,18 +16,46 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
-        Contact details
-      </h1>
 
-      <form class="form" action="task-list" method="post">
 
-        <p>
-          [Insert question content here - see the
-          <a href="https://design-system.service.gov.uk">GOV.UK Design System</a>
-          for examples]
-        </p>
+      <form class="form" action="contact-details-01" method="post">
+<!--  -->
+<div class="govuk-form-group">
+ <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
+   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+     <h1 class="govuk-fieldset__heading">
+       Contact details
+     </h1>
+   </legend>
+   <div id="signIn-hint" class="govuk-hint">
+     Provide details of the person we should contact i the event of a query regading this application. This person will be the company official that we contact to arrange compliance visits.
+   </div>
+   <div class="govuk-radios" data-module="govuk-radios">
+     <div class="govuk-radios__item">
+       <input class="govuk-radios__input" id="signIn" name="signIn" type="radio" value="government-gateway" aria-describedby="signIn-item-hint">
+       <label class="govuk-label govuk-radios__label" for="signIn">
+         Individual
+       </label>
+       <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+         This is a private individual.
+       </div>
+     </div>
+     <div class="govuk-radios__item">
+       <input class="govuk-radios__input" id="signIn-2" name="signIn" type="radio" value="govuk-one-login" aria-describedby="signIn-2-item-hint">
+       <label class="govuk-label govuk-radios__label" for="signIn-2">
+         Organisation with contact
+       </label>
+       <div id="signIn-2-item-hint" class="govuk-hint govuk-radios__hint">
+         Select this option if the contact is an employee of the applicant or acting on behalf of a company different to the applicant (for example, an agent or consultant)
+       </div>
+     </div>
 
+   </div>
+ </fieldset>
+</div>
+<!--  -->
+
+<!--  -->
         {{ govukButton({
           text: "Continue"
         }) }}

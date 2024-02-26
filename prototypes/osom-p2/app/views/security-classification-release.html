@@ -1,0 +1,57 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        What is the security classification of this proposed release?
+      </h1>
+
+      <form class="form" action="mtcr" method="post">
+
+        <div class="govuk-form-group">
+       <label class="govuk-label" for="sort">
+       Security classification
+       </label>
+       <select class="govuk-select" id="sort" name="sort">
+       <option value="published">UK unclassified</option>
+       <option value="updated" selected>UK unclassified</option>
+       <option value="views">UK unclassified</option>
+       <option value="comments">UK unclassified</option>
+       </select>
+       </div>
+<!--  -->
+<div class="govuk-form-group">
+<h1 class="govuk-label-wrapper">
+<label class="govuk-label govuk-label--m" for="more-detail">
+State any descriptors, caveats or code words for this release.
+</label>
+</h1>
+<div id="more-detail-hint" class="govuk-hint">
+<!-- Provide a description of the product you are seeking approval to release. Inclue any detailed technical specifications. -->
+</div>
+<textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
+</div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

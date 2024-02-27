@@ -18,15 +18,16 @@
       <h1 class="govuk-heading-xl">
         Check your answers before sending your application
       </h1>
+      <h2 class="govuk-heading-m">General details</h2>
 
       {{ govukSummaryList({
         rows: [
           {
             key: {
-              text: "Question 1"
+              text: "MOD application type"
             },
             value: {
-              text: "Answer 1"
+              text: "F680"
             },
             actions: {
               items: [
@@ -41,10 +42,10 @@
           ,
           {
             key: {
-              text: "Question 2"
+              text: "Previous application"
             },
             value: {
-              text: "Answer 2"
+              text: "No"
             },
             actions: {
               items: [
@@ -59,10 +60,106 @@
           ,
           {
             key: {
-              text: "Question 3"
+              text: "Clearance type"
             },
             value: {
-              text: "Answer 3"
+              text: "Demonstration overseas"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Clearance requires Open licence"
+            },
+            value: {
+              text: "No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Request early clearance"
+            },
+            value: {
+              text: "No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <!--  -->
+
+      <h2 class="govuk-heading-m">Contact details</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: "Sara Philips "
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Address"
+            },
+            value: {
+              text: "72 Guildford St, London SE23 6FH"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Contact details"
+            },
+            value: {
+              text: "sphilips@acme.com"
             },
             actions: {
               items: [
@@ -77,8 +174,283 @@
         ]
       }) }}
 
+      <!--  -->
+      <h2 class="govuk-heading-m">Product details</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Product name"
+            },
+            value: {
+              text: "Tank"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Product details"
+            },
+            value: {
+              text: "[Detailed product description]"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Designed for cryptographic use?"
+            },
+            value: {
+              text: "No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Requirement to release EW data?"
+            },
+            value: {
+              text: "No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Product entering UK armed forces?"
+            },
+            value: {
+              text: "No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "How is the product funded?"
+            },
+            value: {
+              text: "Private venture"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Has the product been security classified?"
+            },
+            value: {
+              text: "Yes; UK Official"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Local assembly or manufacture?"
+            },
+            value: {
+              text: "No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Security classification of proposed release"
+            },
+            value: {
+              text: "UK Official"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Is product classified as MTCR?"
+            },
+            value: {
+              text: "No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Is foreign technology involved?"
+            },
+            value: {
+              text: "No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Estimated value"
+            },
+            value: {
+              text: "£20,000"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+      <!--  -->
+      <h2 class="govuk-heading-m">Proposed release details</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "What is the operational purpose which you want to release to the end-user?"
+            },
+            value: {
+              text: "[Detailed description]"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Recipient"
+            },
+            value: {
+              text: "Customer; John Doe"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Supporting documents"
+            },
+            value: {
+              text: "[Supporting files]"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+      <!--  -->
+
       <h2 class="govuk-heading-m">
-        Now send your application
+        Declaration
       </h2>
 
       <p>
